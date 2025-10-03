@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vivek Ruhela — Research Scientist | Genomics × AI</title>
+  <meta name="description" content="Research portfolio of Vivek Ruhela — Genomics, ROH in Alzheimer's Disease, AI for biomarker discovery, and open-source tools."/>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%230a0a0a'/%3E%3Ctext x='50' y='60' font-size='58' text-anchor='middle' fill='%23fff' font-family='Arial,Helvetica,sans-serif'%3EV%3C/text%3E%3C/svg%3E"/>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Minimal, self-contained styles -->
+  <style>
+    :root{
+      --bg: #0b0c10;
+      --panel: #111318;
+      --text: #e6e8ee;
+      --muted: #a3a9b9;
+      --brand: #7c3aed; /* violet */
+      --accent: #22d3ee; /* cyan */
+      --ok: #10b981;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --card: linear-gradient(145deg, rgba(124,58,237,.12), rgba(34,211,238,.08));
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#f6f7fb; --panel:#fff; --text:#0b0c10; --muted:#4b5563; --card: linear-gradient(145deg, rgba(124,58,237,.08), rgba(34,211,238,.06)); --shadow: 0 10px 30px rgba(2,6,23,.12);}  
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1120px;margin:0 auto;padding:24px}
+    header{position:sticky;top:0;z-index:50;background:rgba(11,12,16,.6);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
+    nav{display:flex;align-items:center;gap:14px;justify-content:space-between}
+    .nav-links a{color:var(--muted);font-weight:500;padding:10px 12px;border-radius:12px}
+    .nav-links a.active,.nav-links a:focus,.nav-links a:hover{color:var(--text);background:rgba(124,58,237,.18)}
+    .toggle{cursor:pointer;border:1px solid rgba(255,255,255,.12);padding:10px 12px;border-radius:12px;background:transparent;color:var(--text)}
+
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:56px 0}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(34,211,238,.16);color:#d8fbff;border:1px solid rgba(34,211,238,.35);padding:8px 12px;border-radius:999px;font-size:14px}
+    .title{font-size:clamp(32px,6vw,58px);line-height:1.05;margin:16px 0;font-weight:800;letter-spacing:-.02em}
+    .subtitle{font-size:18px;color:var(--muted);max-width:70ch}
+    .cta{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:var(--panel);color:var(--text);text-decoration:none;box-shadow:var(--shadow)}
+    .btn.primary{background:linear-gradient(135deg,var(--brand),#3b82f6);border-color:transparent}
+
+    .card{background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .card.soft{background:var(--card)}
+    .grid{display:grid;gap:18px}
+    .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    @media (max-width:980px){.hero{grid-template-columns:1fr}.grid.cols-3{grid-template-columns:1fr}.grid.cols-2{grid-template-columns:1fr}}
+
+    section{padding:26px 0}
+    section h2{font-size:28px;margin:0 0 12px 0}
+    .pill{display:inline-block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+    .mono{font-family:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace}
+
+    /* Timeline */
+    .timeline{position:relative;padding-left:24px}
+    .timeline:before{content:"";position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(var(--brand),transparent)}
+    .tl-item{position:relative;margin:14px 0;padding:10px 14px 10px 18px;border-left:3px solid rgba(124,58,237,.6);border-radius:10px;background:rgba(124,58,237,.06)}
+
+    footer{padding:40px 0;color:var(--muted)}
+    .footgrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:18px}
+    @media (max-width:980px){.footgrid{grid-template-columns:1fr}}
+
+    /* Chips */
+    .chip{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;border:1px dashed rgba(255,255,255,.2);font-size:12px;color:var(--muted);margin:4px 6px 0 0}
+
+    /* Section accent bars */
+    .accent{height:6px;border-radius:6px;background:linear-gradient(90deg,var(--brand),var(--accent));margin:18px 0}
+
+    /* Publication list */
+    .pub{padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02)}
+    .pub .meta{color:var(--muted);font-size:14px}
+
+    /* Anchor scroll offset */
+    :target::before{content:"";display:block;height:72px;margin-top:-72px;visibility:hidden}
+  </style>
+
+  <!-- MathJax for inline LaTeX in posts/pages -->
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Vivek Ruhela",
+    "jobTitle": "Research Scientist",
+    "affiliation": [{"@type":"Organization","name":"Columbia University"}],
+    "sameAs": [
+      "https://scholar.google.com/", 
+      "https://orcid.org/",
+      "https://github.com/vivekruhela",
+      "https://www.linkedin.com/"
+    ],
+    "url": "https://vivekruhela.github.io"
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div style="display:flex;align-items:center;gap:10px">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 19L10.5 5h3L21 19h-3l-1.7-3.3h-7.6L7 19H3zm9-12.1L9.3 12h5.4L12 6.9z" fill="currentColor"/></svg>
+          <strong class="mono">vivekruhela.github.io</strong>
+        </div>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#research">Research</a>
+          <a href="#projects">Projects</a>
+          <a href="#publications">Publications</a>
+          <a href="#talks">Talks</a>
+          <a href="#contact">Contact</a>
+          <button id="mode" class="toggle" title="Toggle theme">☾</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="hero" id="top">
+        <div>
+          <span class="badge">Genomics × AI × Neurology</span>
+          <h1 class="title">Hi, I’m <span style="background:linear-gradient(90deg,var(--brand),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent">Vivek Ruhela</span> — I study how <em>runs of homozygosity (ROH)</em> illuminate recessive risk in Alzheimer’s disease and accelerate discovery with machine learning.</h1>
+          <p class="subtitle">Postdoctoral Research Scientist (Neurology). Previously: leukemia genomics at Mayo Clinic. I build open tools (R/Python) for ROH detection, eQTL/PRS visualization, and GPU-accelerated VCF processing. I like clean data, clean code, and research you can reproduce.</p>
+          <div class="cta">
+            <a class="btn primary" href="#projects">Explore Projects ↗</a>
+            <a class="btn" href="assets/Vivek_Ruhela_CV.pdf">Download CV</a>
+            <a class="btn" href="mailto:firstname.lastname@columbia.edu" id="emailBtn">Copy Email</a>
+          </div>
+          <div style="margin-top:14px">
+            <span class="chip">ORCID: 0000-0000-0000-0000</span>
+            <span class="chip">Google Scholar</span>
+            <span class="chip">Github @vivekruhela</span>
+            <span class="chip">YouTube: सत्यवेधः</span>
+          </div>
+        </div>
+        <div class="card soft" style="padding:18px">
+          <div class="timeline">
+            <div class="tl-item"><strong>2025–</strong> Postdoc, Columbia Neurology — ROH fine-mapping across ADSP cohorts; ancestry-aware pipelines.</div>
+            <div class="tl-item"><strong>2023–2024</strong> Research Fellow, Mayo Clinic — gene-panel design and AI models (BIO‑DGI, BDL‑SP) for leukemia/MM.</div>
+            <div class="tl-item"><strong>Ph.D.</strong> Mechanical Engineering (Nonlinear Dynamics) — IIT Kharagpur.</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <span class="pill">About</span>
+        <h2>What I’m working on</h2>
+        <div class="accent"></div>
+        <div class="grid cols-2">
+          <div class="card" style="padding:18px">
+            <p>My current focus is building a robust, ancestry-aware <strong>ROH → variant → gene</strong> pipeline for Alzheimer’s disease using ADSP R5 and multi-cohort replication. I’m particularly interested in (1) parameter-stable ROH consensus, (2) rare-variant burden in ROH segments, and (3) integrating eQTL and chromatin signals for prioritization.</p>
+            <p>Beyond AD, I explore transferable architectures from oncology (e.g., MM gene-panel design) to neurodegeneration, emphasizing <span class="mono">reproducibility</span>, <span class="mono">open data</span>, and <span class="mono">explainable AI</span>.</p>
+          </div>
+          <div class="card" style="padding:18px">
+            <h3 style="margin:8px 0">Highlights</h3>
+            <ul>
+              <li>Created <strong>BRAINscape</strong> for eQTL/GWAS/DEG visualization.</li>
+              <li>Built <strong>GPU‑accelerated VCF</strong> parsing & chunking for HPC workflows.</li>
+              <li>Designed <strong>MM‑GRAIL</strong> gene panel; developed <strong>BIO‑DGI</strong> graph model.</li>
+              <li>Talk at <strong>ADPD 2025</strong>: ROH fine‑mapping in AD.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="research">
+        <span class="pill">Research</span>
+        <h2>Open questions I chase</h2>
+        <div class="accent"></div>
+        <div class="grid cols-3">
+          <div class="card" style="padding:18px">
+            <h3>ROH sensitivity × specificity</h3>
+            <p>Instead of one fixed parameter set, learn a <em>consensus of true ROH</em> across parameter sweeps and test association stability.</p>
+            <div class="chip">AutoMap</div><div class="chip">PLINK</div><div class="chip">Bayesian</div>
+          </div>
+          <div class="card" style="padding:18px">
+            <h3>Rare variants in ROH</h3>
+            <p>Aggregate rare, recessive hits within high‑prevalence ROH windows; link to gene expression and regulatory maps.</p>
+            <div class="chip">SAIGE</div><div class="chip">GCTA</div><div class="chip">TensorQTL</div>
+          </div>
+          <div class="card" style="padding:18px">
+            <h3>Ancestry-aware prioritization</h3>
+            <p>Control for population structure and LD to avoid spurious signals; triangulate with functional annotations.</p>
+            <div class="chip">ADSP</div><div class="chip">MU‑BRAIN</div><div class="chip">ROSMAP</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <span class="pill">Projects</span>
+        <h2>Tools & Pipelines</h2>
+        <div class="accent"></div>
+        <div class="grid cols-3">
+          <a class="card" style="padding:18px;display:block" href="https://github.com/vivekruhela" target="_blank" rel="noreferrer">
+            <h3>BRAINscape</h3>
+            <p>R + Shiny app for interactive exploration of eQTL/GWAS/DEG overlays with Manhattan/QQ plots and gene filters.</p>
+            <code class="mono">R / Shiny / plotly</code>
+          </a>
+          <div class="card" style="padding:18px">
+            <h3>ROH‑Atlas</h3>
+            <p>HPC‑ready pipeline to extract consensus/union ROH, compute prevalence maps, and annotate with gene/LOEUF.</p>
+            <code class="mono">PLINK / AutoMap / Python</code>
+          </div>
+          <div class="card" style="padding:18px">
+            <h3>BIO‑DGI</h3>
+            <p>Graph‑conv model for multi‑myeloma gene‑panel design (extends to neurodegeneration).</p>
+            <code class="mono">PyTorch Geometric</code>
+          </div>
+        </div>
+      </section>
+
+      <section id="publications">
+        <span class="pill">Publications</span>
+        <h2>Selected papers & preprints</h2>
+        <div class="accent"></div>
+        <div class="grid">
+          <div class="pub">
+            <strong>Runs of Homozygosity Fine‑Mapping Identifies Recessive Risk Windows in Alzheimer’s Disease</strong><br/>
+            <span class="meta">bioRxiv, 2025 (in prep). Ruhela V, Tosto G, et al.</span>
+          </div>
+          <div class="pub">
+            <strong>AI‑Guided Gene Panel Design for Multiple Myeloma</strong><br/>
+            <span class="meta">2024. Ruhela V, et al. (preprint/manuscript)</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="talks">
+        <span class="pill">Talks</span>
+        <h2>Invited & conference talks</h2>
+        <div class="accent"></div>
+        <ul>
+          <li>ADPD 2025 — <em>Stability‑aware ROH fine‑mapping in AD</em> (platform talk)</li>
+          <li>Neurology Seminar Series, Columbia — <em>ROH prevalence maps across ADSP cohorts</em></li>
+        </ul>
+      </section>
+
+      <section id="contact">
+        <span class="pill">Contact</span>
+        <h2>Let’s collaborate</h2>
+        <div class="accent"></div>
+        <div class="grid cols-2">
+          <form class="card" style="padding:18px" name="contact" method="POST" data-netlify="true">
+            <input type="hidden" name="form-name" value="contact">
+            <label>Name<br><input style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.18);background:transparent;color:var(--text)" name="name" required></label><br>
+            <label>Email<br><input style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.18);background:transparent;color:var(--text)" name="email" required type="email"></label><br>
+            <label>Message<br><textarea style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.18);background:transparent;color:var(--text)" name="message" rows="5" required></textarea></label><br>
+            <button class="btn primary" type="submit">Send message</button>
+          </form>
+          <div class="card" style="padding:18px">
+            <p><strong>Email:</strong> <a href="mailto:firstname.lastname@columbia.edu">firstname.lastname@columbia.edu</a></p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/vivekruhela">github.com/vivekruhela</a></p>
+            <p><strong>Google Scholar:</strong> <a href="#">View profile</a></p>
+            <p><strong>ORCID:</strong> <a href="#">0000-0000-0000-0000</a></p>
+            <p class="mono" style="font-size:14px;color:var(--muted)">This site is fast, responsive, and 100% static. No cookies. No trackers.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footgrid">
+      <div>
+        <strong>Vivek Ruhela</strong>
+        <p class="mono">Genomics × AI × Neurology</p>
+        <p class="mono">© <span id="year"></span> — Built with hand‑rolled HTML/CSS on GitHub Pages</p>
+      </div>
+      <div>
+        <div class="pill">Navigation</div>
+        <a href="#top">Top</a><br>
+        <a href="#projects">Projects</a><br>
+        <a href="#publications">Publications</a>
+      </div>
+      <div>
+        <div class="pill">Elsewhere</div>
+        <a href="https://github.com/vivekruhela">GitHub</a><br>
+        <a href="#">Google Scholar</a><br>
+        <a href="#">ORCID</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth-scroll active link highlight
+    const links = document.querySelectorAll('.nav-links a[href^="#"]');
+    const sections = [...links].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const id = '#' + entry.target.id;
+        const link = document.querySelector(`.nav-links a[href="${id}"]`);
+        if (link) link.classList.toggle('active', entry.isIntersecting);
+      });
+    }, {rootMargin: '-60% 0px -35% 0px', threshold: 0});
+    sections.forEach(sec => observer.observe(sec));
+
+    // Theme toggle (persist)
+    const modeBtn = document.getElementById('mode');
+    const getPref = () => localStorage.getItem('theme');
+    const setPref = t => localStorage.setItem('theme', t);
+    const apply = t => {
+      if(t==='light'){ document.documentElement.style.filter='invert(0)'; document.documentElement.classList.add('light'); }
+      else { document.documentElement.classList.remove('light'); }
+    }
+    const init = () => { const t=getPref(); if(t){apply(t);} }
+    init();
+    modeBtn.addEventListener('click', () => {
+      const cur = getPref()==='light' ? 'dark' : 'light'; setPref(cur); apply(cur);
+    });
+
+    // Copy email
+    const emailBtn = document.getElementById('emailBtn');
+    emailBtn?.addEventListener('click', (e) => {
+      e.preventDefault();
+      const email = 'firstname.lastname@columbia.edu';
+      navigator.clipboard.writeText(email);
+      emailBtn.textContent = 'Email copied ✔';
+      setTimeout(()=> emailBtn.textContent='Copy Email', 1400);
+    });
+  </script>
+</body>
+</html>
