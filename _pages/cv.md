@@ -1,4 +1,3 @@
-
 ---
 title: "CV"
 permalink: /cv/
@@ -11,7 +10,7 @@ redirect_from:
 
 --------------------
 
-__[CV PDF](https://www.dropbox.com/s/srilfzrlutwzrn0/resume_all_1.pdf?dl=0)__ &nbsp; &nbsp;
-[<i class="fa fa-fw fa-download"></i> Download](https://www.dropbox.com/s/srilfzrlutwzrn0/resume_all_1.pdf?dl=1){: .btn .btn--success}
+__[CV PDF](/files/paper1.pdf)__ &nbsp; &nbsp;
+[<i class="fa fa-fw fa-download"></i> Download](/files/paper1.pdf){: .btn .btn--success download="cv.pdf"}
 
 --------------------
