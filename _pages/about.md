@@ -15,12 +15,11 @@ Before joining Columbia, I was part of the [SBILab](https://sbilab.iiitd.edu.in/
 
 # Research Interests
 
-Genomics & Transcriptomics: Understanding how genetic and expression landscapes vary across individuals and populations.
-
-AI & Machine Learning: Developing interpretable AI models for biomarker discovery and precision medicine.
-
-Bioinformatics Pipelines: Building scalable, GPU-accelerated tools for large-scale multi-omics data analysis.
-
-Population & Evolutionary Genetics: Exploring how population-specific variants and homozygosity patterns influence disease risk.
+1.  Genomics & Transcriptomics: Investigating how genomic variation and transcriptomic regulation contribute to complex traits and disease mechanisms across individuals and populations (e.g., **miRPipe**, **miRSim**).
+2.  AI & Machine Learning in Biology: Designing interpretable, biologically inspired AI frameworks for multi-omics integration, biomarker discovery, and precision medicine applications.
+3.  Bioinformatics & Computational Pipelines: Developing scalable, GPU-accelerated workflows for large-scale genomics, transcriptomics, and variant analysis—ensuring reproducibility and high-throughput performance.
+4.  Statistical & Population Genetics: Conducting genome-wide association, gene-based, and ancestry-informed analyses to uncover genetic determinants of complex diseases in diverse populations.
+5.  Epidemiological & Meta-Analytic Studies: Integrating multi-cohort data using robust statistical and AI-assisted meta-analysis to identify consistent genetic and environmental risk patterns.
+6.  AI-driven Systems Biology: Leveraging deep learning and network-based modeling (e.g., **BIO-DGI**, **BDL-SP**) to map disease pathways and interpret high-dimensional biological data.
 
 Beyond analysis and coding, I enjoy creating visual narratives that translate complex biological insights into accessible knowledge — blending science, storytelling, and design.
