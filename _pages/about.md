@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-Hi, I’m Dr. Vivek Ruhela, a researcher passionate about unraveling the genetic and molecular architecture of complex diseases through the fusion of genomics, bioinformatics, and artificial intelligence.
+Hi, I’m Dr. Vivek Ruhela, a researcher passionate about unraveling the genetic and molecular architecture of complex diseases through the fusion of genetics, genomics, bioinformatics, and artificial intelligence.
 
 I currently work as a Postdoctoral Research Scientist in the [GiusTo Lab](https://www.neurology.columbia.edu/research/research-labs/giusto-lab), Columbia University , where I investigate how genomic variation, gene- and pathway-level associations, and large-scale meta-analyses, powered by advanced sttistical and machine learning approaches to enhence our understanding of complex traits and neurodegenerative diseases. My work integrates whole-genome sequencing, multi-omics, and machine learning to identify hidden patterns of genetic influence across diverse populations.
 
