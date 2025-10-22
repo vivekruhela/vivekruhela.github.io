@@ -2,7 +2,7 @@
 title: "Characterizing the mutational landscape of MM and its precursor MGUS"
 collection: publications
 category: manuscripts
-permalink: /publication/mm-mutation-landscape
+permalink: /publication/2022-04-15-mm-mutation-landscape
 date: 2022-04-15
 venue: 'American Journal of Cancer Research'
 slidesurl: 'http://vivekruhela.github.io/files/mm-mutatiion-landscape_slides.pdf'
@@ -15,3 +15,4 @@ Can mutation patterns predict cancer outcomes?
 In this study, we explored how the mutational burden and signatures evolve as MGUS progresses to Multiple Myeloma (MM) — and how they relate to patient survival. Analyzing genomic data from over 1,000 MM and 61 MGUS cases, we found that hypermutators had poorer survival, with distinct increases in C>A and C>T substitutions and APOBEC activity.
 
 👉 Want to know how mutation dynamics can forecast cancer progression and prognosis? Check out our paper to find out!
+
