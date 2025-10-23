@@ -7,22 +7,30 @@ on:
       - '_talks/**'
       - 'talkmap.ipynb'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
 jobs:
   build:
+    if: ${{ github.actor != 'github-actions[bot]' }}
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v5
       with:
-        python-version: '3.9'  # Specify the Python version you need
+        python-version: '3.11'
 
     - name: Install dependencies
       run: |
-        pip install jupyter pandas requests beautifulsoup4 geopy  # Add other dependencies as needed
-        pip install getorg --upgrade
+        pip install --upgrade pip
+        pip install jupyter pandas requests beautifulsoup4 geopy getorg python-frontmatter
 
     - name: Run Jupyter Notebook
       run: |
