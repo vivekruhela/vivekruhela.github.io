@@ -292,6 +292,17 @@ defaults:
       layout: talk
       author_profile: true
       share: true
+    # _softwares
+  - scope:
+      path: ""
+      type: softwares
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
 
 
 # Sass/SCSS
