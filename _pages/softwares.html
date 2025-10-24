@@ -1,0 +1,17 @@
+---
+layout: archive
+title: "Software"
+permalink: /software/
+author_profile: true
+---
+
+{% include base_path %}
+
+{% assign software_entries = site.softwares | sort: "date" | reverse %}
+{% if software_entries and software_entries.size > 0 %}
+  {% for post in software_entries %}
+    {% include archive-single.html %}
+  {% endfor %}
+{% else %}
+  <p>No software projects have been published yet.</p>
+{% endif %}
