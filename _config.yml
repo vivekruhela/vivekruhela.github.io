@@ -89,6 +89,8 @@ publication_category:
     title: 'Conference Papers'
   software:
     title: 'Software'
+    aliases:
+      - 'softwares'
 
 # Site Settings
 teaser                   :  # filename of teaser fallback teaser image placed in /images/ for social media previews
