@@ -1,6 +1,6 @@
 ---
 title: "BRAINscape: An R package to visualize eQTL and DESeq2 analysis results through an interactive Shiny app for Hispanics and Non-Hispanics White (NHW) in MU-BRAINS."
-permalink: /softwares/brainscape
+permalink: /software/brainscape
 excerpt: "BRAINscape is an interactive Shiny-based platform for exploring, visualizing, and comparing multi-ethnic brain eQTL and GWAS signals in Alzheimer’s disease.."
 date: 2025-02-11
 links:
