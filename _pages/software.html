@@ -7,7 +7,7 @@ author_profile: true
 
 {% include base_path %}
 
-{% assign software_entries = site.softwares | sort: "date" | reverse %}
+{% assign software_entries = site.software | sort: "date" | reverse %}
 {% if software_entries and software_entries.size > 0 %}
   {% for post in software_entries %}
     {% include archive-single.html %}
