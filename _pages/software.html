@@ -7,7 +7,13 @@ author_profile: true
 
 {% include base_path %}
 
-{% assign software_entries = site.software | sort: "date" | reverse %}
+{% assign software_entries = site.software %}
+{% if software_entries == nil and site.collections and site.collections['software'] %}
+  {% assign software_entries = site.collections['software'].docs %}
+{% endif %}
+{% if software_entries %}
+  {% assign software_entries = software_entries | sort: "date" | reverse %}
+{% endif %}
 {% if software_entries and software_entries.size > 0 %}
   {% for post in software_entries %}
     {% include archive-single.html %}
