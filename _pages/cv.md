@@ -11,6 +11,6 @@ redirect_from:
 --------------------
 
 __[CV PDF](/files/Vivek_Ruhela_CV.pdf)__ &nbsp; &nbsp;
-[<i class="fa fa-fw fa-download"></i> Download](/files/paper1.pdf){: .btn .btn--success download="cv.pdf"}
+[<i class="fa fa-fw fa-download"></i> Download](/files/Vivek_Ruhela_CV.pdf){: .btn .btn--success download="cv.pdf"}
 
 --------------------
