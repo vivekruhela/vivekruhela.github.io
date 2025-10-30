@@ -10,7 +10,7 @@ redirect_from:
 
 --------------------
 
-__[CV PDF](/files/paper1.pdf)__ &nbsp; &nbsp;
+__[CV PDF](/files/Vivek_Ruhela_CV.pdf)__ &nbsp; &nbsp;
 [<i class="fa fa-fw fa-download"></i> Download](/files/paper1.pdf){: .btn .btn--success download="cv.pdf"}
 
 --------------------
