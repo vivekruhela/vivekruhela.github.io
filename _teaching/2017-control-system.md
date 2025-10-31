@@ -8,14 +8,14 @@ date: 2014-01-01
 location: "Kanpur, India"
 ---
 
-### 📘 Course Overview
+### Course Overview
 
 This undergraduate course introduced the **fundamental concepts of Control Systems**, emphasizing analysis, modeling, and design of feedback systems used in **electrical, mechanical, and electronic engineering** applications.  
 Students explored how to represent and analyze dynamic systems using **transfer functions, state-space models, block diagrams**, and **signal flow graphs**, and learned to evaluate system performance using both **time-domain** and **frequency-domain** techniques.
 
 ---
 
-### 🎯 Learning Outcomes
+### Learning Outcomes
 
 By the end of this course, students were able to:
 - Understand the **principles of open-loop and closed-loop control systems**.  
@@ -27,7 +27,7 @@ By the end of this course, students were able to:
 
 ---
 
-### 🧠 Major Topics Covered
+### Major Topics Covered
 
 | Week | Topics |
 |------|---------|
@@ -46,7 +46,7 @@ By the end of this course, students were able to:
 
 ---
 
-### 🧩 Tools and Techniques
+### Tools and Techniques
 
 - **MATLAB / Simulink** for system modeling and control design  
 - **Scilab** for open-source simulation demonstrations  
@@ -54,7 +54,7 @@ By the end of this course, students were able to:
 
 ---
 
-### 🧑‍🏫 Teaching Highlights
+### Teaching Highlights
 
 - Designed and supervised **mini-projects** on real-time control applications.  
 - Introduced simulation-based assignments to improve conceptual clarity.  
