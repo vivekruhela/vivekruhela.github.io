@@ -23,7 +23,7 @@ repository               : "https://github.com/vivekruhela/vivekruhela.github.io
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "Vivek-Current-Pic.png"
+  avatar           : "Vivek-Current-Pic.JPG"
   name             : "Vivek Ruhela"
   pronouns         : "he / him / his"  
   bio              : "Genome Decoding × AI × Complex Disease"
