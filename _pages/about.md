@@ -23,3 +23,10 @@ Before joining Columbia, I was part of the [SBILab](https://sbilab.iiitd.edu.in/
 6.  AI-driven Systems Biology: Leveraging deep learning and network-based modeling (e.g., **BIO-DGI**, **BDL-SP**) to map disease pathways and interpret high-dimensional biological data.
 
 Beyond analysis and coding, I enjoy creating visual narratives that translate complex biological insights into accessible knowledge — blending science, storytelling, and design.
+
+# Reach Out
+Let's collaborate and Innovate together. If you are interested in discussing research ideas, potential collaborations, or AI-driven genomics projects, feel free to reach out using the form below.
+
+[Reach Out Form](https://docs.google.com/forms/d/e/1FAIpQLScwxaomLlTxLzBnpKUPGWKJrlyBvPq_YLi-Ab2vxf5KOqp6IQ/viewform?usp=dialog)
+
+
