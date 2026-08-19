@@ -7,26 +7,32 @@ redirect_from:
   - /about.html
 ---
 
-Hi, I’m Dr. Vivek Ruhela , a researcher passionate about unraveling the genetic and molecular architecture of complex diseases by integrating genetics, genomics, bioinformatics, and explainable artificial intelligence (XAI).
+Hi, I’m **Dr. Vivek Ruhela**, a computational genomics researcher investigating how genetic variation, molecular networks, and interpretable artificial intelligence can improve our understanding of complex diseases.
 
-I currently work as a Postdoctoral Research Scientist in the [GiusTo Lab](https://www.neurology.columbia.edu/research/research-labs/giusto-lab), at Columbia University, where I investigate how genomic variation, gene- and pathway-level associations, and large-scale meta-analyses contribute to complex traits and neurodegenerative diseases. My work combines whole-genome sequencing, multi-omics (DNA/RNA/Single-Cell), and XAI to uncover hidden patterns of genetic influence across diverse populations. A key emphasis of my current research is designing interpretable, statistically grounded models that move beyond prediction to explain why certain genetic signals matter.
+I am currently a **Postdoctoral Research Scientist in the [GiusTo Lab](https://www.neurology.columbia.edu/research/research-labs/giusto-lab) at Columbia University**. My research integrates whole-genome sequencing, population genetics, transcriptomics, single-cell data, statistical association methods, and explainable AI to identify genes and pathways involved in complex traits and neurodegenerative diseases. A central goal of my work is to move beyond predictive black-box models and develop approaches that explain why particular genomic signals matter.
 
-Before joining Columbia, I was part of the [SBILab](https://sbilab.iiitd.edu.in/) (Signal Processing and Biomedical Imaging Lab) at the Indraprastha Institute of Information Technology Delhi, where I explored the intersection of genomics and XAI. I developed bioinformatics workflows for RNA-seq analysis (e.g., **miRPipe**, **miRSim**) in Chronic Lymphocytic Leukemia (CLL), and created biologically inspired, AI-powered frameworks such as **BDL-SP** and **BIO-DGI** to decode the mutational landscape and identify key molecular drivers in Multiple Myeloma (MM). These projects were early efforts in what would evolve into a deeper interest in explainable and mechanistic AI, where computational models reflect the logic of biological systems rather than functioning as black boxes.
+## Research Focus
 
-# Research Interests
+My work spans three connected areas:
 
-1.  Genomics & Transcriptomics: Investigating how genomic variation and transcriptomic regulation contribute to complex traits and disease mechanisms across individuals and populations (e.g., **miRPipe**, **miRSim**).
-2.  XAI & Machine Learning in Biology: Designing interpretable, biologically inspired AI frameworks for multi-omics integration, biomarker discovery, and precision medicine applications.
-3.  Bioinformatics & Computational Pipelines: Developing scalable, GPU-accelerated workflows for large-scale genomics, transcriptomics, and variant analysis—ensuring reproducibility and high-throughput performance.
-4.  Statistical & Population Genetics: Conducting genome-wide association, gene-based, and ancestry-informed analyses to uncover genetic determinants of complex diseases in diverse populations.
-5.  Epidemiological & Meta-Analytic Studies: Integrating multi-cohort data using robust statistical and AI-assisted meta-analysis to identify consistent genetic and environmental risk patterns.
-6.  AI-driven Systems Biology: Leveraging deep learning and network-based modeling (e.g., **BIO-DGI**, **BDL-SP**) to map disease pathways and interpret high-dimensional biological data.
+* **Genomics and population genetics:** studying genetic variation, gene-level associations, ancestry-aware effects, and disease mechanisms across diverse populations.
+* **Multi-omics and bioinformatics:** building reproducible computational workflows for genomic, transcriptomic, and single-cell analysis.
+* **Explainable AI and systems biology:** designing biologically informed models that connect molecular features with genes, pathways, and interaction networks.
 
-Beyond analysis and coding, I enjoy creating visual narratives that translate complex biological insights into accessible knowledge — blending science, storytelling, and design.
+## Selected Contributions
 
-# Reach Out
-Let's collaborate and Innovate together. If you are interested in discussing research ideas, potential collaborations, or AI-driven genomics projects, feel free to reach out using the form below.
+Before joining Columbia, I worked with the [Signal Processing and Biomedical Imaging Lab](https://sbilab.iiitd.edu.in/) at IIIT-Delhi. There, I developed open-source RNA-analysis tools including **miRPipe** and **miRSim**, and contributed to interpretable AI frameworks for cancer genomics.
 
-[Reach Out Form](https://docs.google.com/forms/d/e/1FAIpQLScwxaomLlTxLzBnpKUPGWKJrlyBvPq_YLi-Ab2vxf5KOqp6IQ/viewform?usp=dialog)
+These projects include **BDL-SP**, which investigates altered signaling pathways in multiple myeloma, and **BIO-DGI**, an attention-based graph-learning framework used to derive a 295-gene research panel for studying the transition from monoclonal gammopathy of undetermined significance to multiple myeloma.
+
+Across these projects, my broader aim is to transform high-dimensional genomic data into biological explanations, reproducible tools, and testable hypotheses for precision medicine.
+
+## Science, Communication, and Collaboration
+
+I also enjoy creating visual and accessible explanations of complex computational biology—connecting scientific analysis with storytelling, education, and open research.
+
+I welcome conversations about collaborative research, genomics, population genetics, multi-omics, explainable AI, and bioinformatics tool development.
+
+[Get in touch](https://docs.google.com/forms/d/e/1FAIpQLScwxaomLlTxLzBnpKUPGWKJrlyBvPq_YLi-Ab2vxf5KOqp6IQ/viewform?usp=dialog)
 
 
