@@ -98,24 +98,7 @@ The nine protein-interaction resources integrated in the workflow were **BioGRID
 
 ---
 
-## BIO-DGI for beginners: a social-network analogy
-
-Imagine trying to understand an organization by looking only at individual résumés. You might learn who has certain skills, but not who collaborates with whom, which teams exchange information, or which relationships become important during a crisis.
-
-BIO-DGI adds that missing organizational map:
-
-- A **gene** is a person.
-- A **protein–protein interaction** is a known working relationship.
-- A gene’s **genomic features** are that person’s current state or activity profile.
-- **Attention weights** estimate which relationships are most informative for the current task.
-- A **graph convolution** allows each gene to incorporate information from its neighbors.
-- The final classifier estimates whether the complete pattern resembles MGUS or MM.
-
-This analogy also explains why interpretation matters. A useful model should not merely output “MM.” It should help us inspect which genes, genomic features, and neighborhoods contributed to that result.
-
----
-
-## BIO-DGI for advanced readers
+## BIO-DGI Model Architecture
 
 For a given patient, the genomic input can be viewed as a feature matrix \(X\), where rows correspond to genes and columns correspond to genomic measurements. The prior interaction network is represented by an adjacency matrix \(A\).
 
