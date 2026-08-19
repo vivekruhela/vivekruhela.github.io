@@ -31,7 +31,7 @@ The central idea is simple: a gene should not be studied only as an isolated col
 
 ---
 
-## Why this problem matters
+## Background: Why this problem matters
 
 MGUS and MM share many genomic alterations. This makes the transition between the two states more subtle than a simple “mutation present versus mutation absent” comparison. Several questions arise:
 
@@ -122,7 +122,7 @@ For a given patient, the genomic input can be viewed as a feature matrix \(X\), 
 BIO-DGI applies a multi-head attention mechanism to learn context-relevant weights for gene–gene relationships. Conceptually, the learned adjacency can be written as:
 
 $$
-\tilde{A} = \operatorname{Attention}(A, X)
+\tilde{A} = \mathrm{Attention}(A,X)
 $$
 
 A graph-convolutional layer then aggregates each gene’s features with information from its neighbors:
@@ -273,24 +273,6 @@ The panel and BIO-DGI framework can support several **research** applications:
 
 ---
 
-## What this study does not yet establish
-
-A responsible interpretation is as important as the discovery itself.
-
-- The panel is **not described as an approved clinical diagnostic**.
-- Association and model importance do not prove causation.
-- A cross-sectional MM/MGUS comparison is not a substitute for longitudinal prediction of progression.
-- The MGUS cohort is much smaller than the MM cohort, creating class imbalance and wider uncertainty for precursor-stage patterns.
-- PPI databases are incomplete, context dependent, and biased toward well-studied proteins.
-- Survival associations were univariate; multivariable validation against established clinical factors is a logical next step.
-- Assay-level performance—coverage uniformity, sensitivity, specificity, limit of detection, CNV/SV performance, and reproducibility—requires laboratory validation.
-- External validation should be performed on truly independent cohorts, preferably with locked preprocessing and model parameters.
-- Prospective utility must ultimately be tested against clinically relevant endpoints.
-
-For these reasons, the 295-gene panel should currently be described as a **research panel and biomarker-discovery framework**, not as a standalone test for diagnosis, prognosis, or treatment selection.
-
----
-
 ## Targeted panel versus WES and WGS
 
 | Property | 295-gene targeted design | Whole-exome sequencing | Whole-genome sequencing |
@@ -323,39 +305,6 @@ The [public repository](https://github.com/vivekruhela/BIO-DGI) contains the gra
 | `GEO2R_validation/` | Additional expression-dataset validation resources |
 | `adj_mats/` | Graph adjacency-matrix resources |
 | `new_folds/` | Model-fold outputs and related analysis artifacts |
-
-### Important reproducibility note
-
-Some notebook filenames still refer to an earlier **282-gene** development snapshot, whereas the peer-reviewed paper and current README describe the final **295-gene** panel. Readers reproducing the published result should treat the peer-reviewed 295-gene specification as authoritative and verify that code, panel coordinates, reference genome, database versions, and model checkpoints correspond to the final analysis.
-
-The repository should be approached as research code rather than a turnkey clinical pipeline. Controlled-access patient data are not distributed with the repository, and users should independently confirm software dependencies, data permissions, preprocessing details, random seeds, cohort partitioning, and licensing before reuse.
-
----
-
-## A reproducibility checklist for advanced users
-
-Before attempting to retrain or extend BIO-DGI, record the following:
-
-- reference genome build and gene annotation release,
-- variant-calling and filtering pipelines,
-- sample inclusion/exclusion criteria,
-- ancestry and cohort composition,
-- definition of every genomic feature,
-- rules used to select the initial altered-gene set,
-- versions and confidence thresholds of all nine PPI resources,
-- graph merging and duplicate-edge rules,
-- train/validation/test partitioning at the patient level,
-- handling of MM/MGUS class imbalance,
-- random seeds and number of repeated runs,
-- hyperparameter-selection procedure,
-- comparator models and tuning budgets,
-- SHAP background data and aggregation method,
-- pathway database/version and multiple-testing correction,
-- survival endpoints, censoring rules, and covariates,
-- exact 295-gene list and target coordinates, and
-- independent external-validation protocol.
-
-A strong future release would package these items with a versioned environment, machine-readable configuration, unit tests, a small synthetic example, and a frozen panel BED file.
 
 ---
 
@@ -398,5 +347,3 @@ Ruhela V, Gupta R, Oberoi R, Gupta A. BIO-DGI: Bio-Inspired Graph Network
 Learning-based Gene–Gene Interaction framework for multiple myeloma.
 https://github.com/vivekruhela/BIO-DGI
 ```
-
-> **Medical disclaimer:** This article discusses a research study and research software. It does not provide medical advice, and the panel should not be used for clinical decision-making without appropriate regulatory, analytical, and clinical validation.
