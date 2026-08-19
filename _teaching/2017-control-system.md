@@ -1,66 +1,138 @@
 ---
-title: "Control System"
+title: "Control Systems"
 collection: teaching
 type: "Undergraduate Course"
-permalink: /teaching/2014-control-system/
-venue: "AKTU University, Department of Electrical and Electronics Engineering (EEE)"
-date: 2014-01-01
-location: "Kanpur, India"
+permalink: /teaching/2017-control-system/
+redirect_from:
+  - /teaching/2014-control-system/
+venue: "Pranveer Singh Institute of Technology (PSIT), affiliated with Dr. A.P.J. Abdul Kalam Technical University (AKTU)"
+date: 2017-01-01
+location: "Kanpur, Uttar Pradesh, India"
+excerpt: "An undergraduate course in classical control theory, covering feedback-system modelling, time- and frequency-domain analysis, stability, compensation, and state-space methods."
 ---
 
-### Course Overview
+I taught **Control Systems (NEE-503)** in the Department of Electrical and Electronics Engineering at **Pranveer Singh Institute of Technology (PSIT), Kanpur**, an institution affiliated with **Dr. A.P.J. Abdul Kalam Technical University (AKTU), Uttar Pradesh, India**. I also prepared the detailed course plan.
 
-This undergraduate course introduced the **fundamental concepts of Control Systems**, emphasizing analysis, modeling, and design of feedback systems used in **electrical, mechanical, and electronic engineering** applications.  
-Students explored how to represent and analyze dynamic systems using **transfer functions, state-space models, block diagrams**, and **signal flow graphs**, and learned to evaluate system performance using both **time-domain** and **frequency-domain** techniques.
+The course introduced undergraduate engineering students to the modelling, analysis, and design of feedback control systems. Its emphasis was both **conceptual and numerical**: students learned the physical meaning of feedback and stability, then applied analytical methods to representative electrical, mechanical, and electromechanical systems.
 
----
+## Course information
 
-### Learning Outcomes
+| Item | Details |
+|---|---|
+| Course code | NEE-503 |
+| Level | Undergraduate |
+| Department | Electrical and Electronics Engineering |
+| Institution | Pranveer Singh Institute of Technology (PSIT), Kanpur |
+| University affiliation | Dr. A.P.J. Abdul Kalam Technical University (AKTU) |
+| L-T-P | 3-1-0 |
+| Credits | 4 |
+| Course planner and instructor | Vivek Ruhela |
+| Teaching emphasis | Numerical problem-solving and conceptual understanding |
 
-By the end of this course, students were able to:
-- Understand the **principles of open-loop and closed-loop control systems**.  
-- Model physical systems using **differential equations** and **Laplace transforms**.  
-- Derive and interpret **transfer functions** for electrical, mechanical, and electromechanical systems.  
-- Analyze **system stability** using **Routh–Hurwitz**, **Bode**, **Nyquist**, and **Root Locus** methods.  
-- Design **PID controllers** and perform system compensation for desired performance.  
-- Use **MATLAB/Simulink** for simulation and validation of control system behavior.
+## Learning outcomes
 
----
+By the end of the course, students were expected to be able to:
 
-### Major Topics Covered
+- distinguish between open-loop and closed-loop systems and explain the role of negative feedback;
+- derive transfer-function models for physical systems and simplify block diagrams and signal-flow graphs;
+- analyse first- and second-order system responses using standard test signals and performance specifications;
+- calculate steady-state error and interpret static error constants;
+- assess stability using the Routh-Hurwitz criterion, root-locus construction, and frequency-response methods;
+- interpret polar, inverse-polar, Nyquist, and Bode plots, including gain and phase margins;
+- explain the function of servomotors, synchros, and stepper motors in control systems;
+- design and compare lead, lag, and lead-lag compensation in the time and frequency domains; and
+- convert between transfer-function and state-space representations and test controllability and observability.
 
-| Week | Topics |
-|------|---------|
-| 1 | Introduction to control systems: Open- and closed-loop concepts |
-| 2 | Mathematical modeling of dynamic systems (mechanical, electrical, electromechanical) |
-| 3 | Transfer function derivation and block diagram reduction |
-| 4 | Signal flow graphs and Mason’s gain formula |
-| 5 | Time-domain analysis and transient response of first- and second-order systems |
-| 6 | Steady-state error and system type classification |
-| 7 | Stability analysis using Routh–Hurwitz criterion |
-| 8 | Frequency-domain analysis: Bode and Nyquist plots |
-| 9 | Root locus technique and system design |
-| 10 | PID controller design and tuning |
-| 11 | Lead, lag, and lead-lag compensation techniques |
-| 12 | MATLAB/Simulink laboratory and mini-project demonstrations |
+## Syllabus
 
----
+### Unit I — Foundations of control systems
 
-### Tools and Techniques
+- Open-loop and closed-loop control
+- Servomechanisms and physical examples
+- Transfer functions and modelling of physical systems
+- Block-diagram algebra and reduction
+- Signal-flow graphs and Mason's gain formula
+- Sensitivity, parameter variation, disturbance rejection, and negative feedback
 
-- **MATLAB / Simulink** for system modeling and control design  
-- **Scilab** for open-source simulation demonstrations  
-- **Hands-on sessions** on servo motor control, DC motor speed control, and temperature control systems  
+### Unit II — Time-response analysis
 
----
+- Standard test signals
+- First- and second-order system response
+- Transient- and steady-state specifications
+- Steady-state errors and error constants
+- Proportional, integral, and derivative control concepts
+- PI, PD, and PID compensation
+- Higher-order approximations and performance indices
 
-### Teaching Highlights
+### Unit III — Components, stability, and root locus
 
-- Designed and supervised **mini-projects** on real-time control applications.  
-- Introduced simulation-based assignments to improve conceptual clarity.  
-- Integrated mathematical intuition with visual demonstrations using **MATLAB plots** and **block diagram animations**.  
-- Encouraged students to relate theory to real-world control systems — robotics, automation, and power converters.
+- AC servomotors, synchros, and stepper motors
+- Stability concepts and necessary conditions
+- Routh-Hurwitz criterion and special cases
+- Root-locus rules and construction
+- Effects of adding poles and zeros
+- Angles of arrival and departure and breakaway points
 
----
+### Unit IV — Frequency-response analysis
 
+- Relationship between time- and frequency-domain responses
+- Polar and inverse-polar plots
+- Nyquist plots and the Nyquist stability criterion
+- Bode magnitude and phase plots
+- Gain margin, phase margin, and relative stability
+- Constant-M and constant-N circles
 
+### Unit V — Compensator design and state-space methods
+
+- The control-system design problem
+- Lead, lag, and lead-lag networks
+- Compensation using root-locus and Bode-plot methods
+- State variables, state equations, and output equations
+- Conversion between transfer-function and state-space models
+- Controllability and observability
+
+## Teaching approach
+
+The lecture plan comprised **60 topic-focused sessions** supported by tutorials. The sequence moved from physical intuition and mathematical modelling to analysis and design:
+
+1. **Model the system** using transfer functions, block diagrams, and signal-flow graphs.
+2. **Characterise performance** through transient response, steady-state error, damping, and pole locations.
+3. **Determine stability** using algebraic, root-locus, and frequency-domain criteria.
+4. **Improve performance** using controllers and compensating networks.
+5. **Generalise the model** through state-space representation, controllability, and observability.
+
+Worked numerical problems were integrated throughout the course, including block-diagram reduction, Mason's gain formula, Routh-Hurwitz stability tests, root-locus construction, Bode and Nyquist analysis, margin calculations, compensator design, and state-space conversion.
+
+## Detailed lecture sequence
+
+| Lectures | Focus |
+|---:|---|
+| 1-9 | Applications of control; open- and closed-loop systems; transfer functions; block-diagram reduction; signal-flow graphs; sensitivity analysis |
+| 10-15 | Standard test signals; first- and second-order systems; transient-response specifications; numerical response analysis |
+| 16-21 | Pole locations; steady-state error; controllers; higher-order systems; PI and PD control |
+| 22-30 | Control-system components; Routh-Hurwitz criterion; root-locus rules, construction, and special cases |
+| 31-40 | Frequency response; polar and inverse-polar plots; Nyquist mapping and stability criterion |
+| 41-48 | Bode plots; pole/zero contributions; gain and phase margins; transfer-function estimation; M and N circles |
+| 49-60 | Lead, lag, and lead-lag compensation; state-space models; model conversion; controllability and observability |
+
+## Representative applications
+
+The course connected theory with practical engineering examples such as:
+
+- servomechanisms and position-control systems;
+- motor speed and motion control;
+- industrial automation and process control;
+- electrical and electromechanical system modelling; and
+- feedback-based disturbance rejection and robustness.
+
+## Core reading
+
+1. B. S. Manke, *Linear Control Systems*, 11th ed., Khanna Publishers, 2012.
+2. Ashfaq Husain and Haroon Ashfaq, *Control Systems*, 1st ed., Dhanpat Rai & Co., 2011.
+3. I. J. Nagrath and M. Gopal, *Control Systems Engineering*, New Age International.
+4. Katsuhiko Ogata, *Modern Control Engineering*, Prentice Hall of India.
+5. Benjamin C. Kuo and Farid Golnaraghi, *Automatic Control Systems*, Wiley India.
+
+## Teaching perspective
+
+Teaching control theory shaped how I explain complex biological systems today. Both fields require learners to move between components, interactions, system-level behaviour, perturbations, and measurable outputs. This systems perspective now informs my teaching and research interests in genetics, genomics, biological networks, and AI-enabled biomedical discovery.
