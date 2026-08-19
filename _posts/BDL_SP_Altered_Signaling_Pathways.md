@@ -29,7 +29,7 @@ BDL-SP stands for **Bio-inspired Deep Learning architecture for the identificati
 
 ---
 
-## Why study the transition from MGUS to MM?
+## Background: Why study the transition from MGUS to MM?
 
 MM develops through the accumulation and selection of genomic abnormalities. Some events may already exist during MGUS, whereas others emerge or become more important during progression. Studying these differences can help answer several biological questions:
 
@@ -119,23 +119,7 @@ The 824 genes were connected using protein-interaction information from **STRING
 
 ---
 
-## BDL-SP for beginners: a city-map analogy
-
-Imagine that each gene is a location in a city.
-
-- A gene’s genomic measurements describe what is happening at that location.
-- The STRING network supplies the roads connecting locations.
-- Graph convolution allows information to move along those roads.
-- The classifier learns whether the city-wide pattern looks more like MGUS or MM.
-- SHAP then asks which locations and measurements most influenced the decision.
-
-A conventional tabular model can learn from the measurements, but it does not naturally encode the road map. BDL-SP explicitly uses that biological network to allow the representation of one gene to depend on information from its neighbors.
-
-This does not mean that every STRING edge is active in a plasma cell or in every patient. The graph is prior biological knowledge—a useful scaffold that remains incomplete and context dependent.
-
----
-
-## BDL-SP for advanced readers
+## BDL-SP Model Architecture
 
 The released implementation uses a normalized STRING-derived adjacency matrix with self-loops. For every patient, the graph model processes the 824-by-28 feature matrix through two graph-convolution stages.
 
@@ -346,25 +330,6 @@ The paper’s benchmarking shows why both quantitative and qualitative assessmen
 
 ---
 
-## What the study does not yet establish
-
-A careful interpretation should retain the following limitations:
-
-- The comparison is cross-sectional and largely unpaired; it does not reconstruct progression within individual patients.
-- The MGUS class contains only 61 samples, creating substantial uncertainty despite cost-sensitive training.
-- Cohort source, geography, sequencing workflow, and disease label may be confounded.
-- WES does not capture the full non-coding genome and has limited sensitivity for some structural alterations.
-- Combining four variant callers improves coverage but can propagate caller-specific artifacts without strict consensus and filtering rules.
-- STRING is not plasma-cell-specific and includes interactions that may be inactive in the relevant disease context.
-- SHAP explains the fitted model, not causal disease mechanisms.
-- Pathway enrichment is sensitive to gene-set choice and annotation-database version.
-- Cross-validation within the combined dataset is not equivalent to independent external validation.
-- The work does not establish prospective clinical utility, diagnostic performance, or treatment benefit.
-
-BDL-SP should therefore be presented as an **explainable research framework for genomic biomarker and pathway discovery**, not as a clinical prediction system.
-
----
-
 ## Exploring the BDL-SP repository
 
 The [public repository](https://github.com/vivekruhela/BDL-SP-Bio-inspired-DL-architecture-for-Identification-of-altered-Signaling-Pathways-in-MM) contains the model script, SHAP notebooks, supplementary results, figure, dependency list, and an Apache-2.0 license.
@@ -380,58 +345,6 @@ The [public repository](https://github.com/vivekruhela/BDL-SP-Bio-inspired-DL-ar
 | `requirements.txt` | Partial dependency list |
 | `.github/workflows/python-package.yml` | Basic install, lint, and pytest workflow |
 
-### Reproducibility notes
-
-The repository is a research snapshot rather than a turnkey package. Before running it, users should note that:
-
-- the main script contains developer-specific absolute filesystem paths;
-- controlled-access cohort data and derived patient feature matrices are not included;
-- the code references a STRING adjacency CSV that is not evident in the top-level release;
-- dependency versions are unpinned;
-- the dependency file includes Python standard-library modules and does not list every imported scientific package, including PyTorch Geometric;
-- no end-to-end synthetic example or expected-output test is provided; and
-- the README reports testing on Ubuntu 18.04 with 8 GB RAM, which does not define a modern reproducible environment.
-
-A future release would benefit from a versioned Conda or container environment, configurable paths, a small synthetic dataset, a documented adjacency builder, explicit fold files, saved checkpoints, unit tests, and a single command that reproduces a smoke-test result.
-
----
-
-## Reproducibility checklist for advanced users
-
-Record and freeze the following before attempting to reproduce or extend the study:
-
-- reference genome and ANNOVAR database versions;
-- exact versions and parameters for all four variant callers;
-- variant normalization, filtering, and union rules;
-- dNdScv version, covariates, and significance threshold;
-- definitions of all 28 genomic features;
-- handling of missing genes and zero-variant samples;
-- STRING version, confidence threshold, and identifier mapping;
-- the exact ordered list of 824 genes;
-- feature-scaling procedure;
-- patient-level fold assignments and random seeds;
-- class weights and the rationale for their selection;
-- optimizer, learning rate, dropout, epoch limit, and early-stopping behavior;
-- saved model state used for every SHAP analysis;
-- SHAP explainer type, background data, and ranking rule;
-- gene-set databases, release dates, gene universe, and correction method; and
-- external-validation cohorts and predefined endpoints.
-
----
-
-## Recommended next steps
-
-1. Validate BDL-SP on an independent, prospectively assembled MGUS/MM cohort.
-2. Include smoldering multiple myeloma as an intermediate disease state.
-3. Use longitudinal samples to evaluate within-patient molecular evolution.
-4. Separate genetic ancestry from geography and study source.
-5. Compare static STRING edges with tissue- and plasma-cell-specific interaction networks.
-6. Quantify stability of SHAP gene rankings across folds, seeds, and explainers.
-7. Benchmark against simple burden-based and clinical baselines using identical splits.
-8. Evaluate whether genomic explanations add value beyond established laboratory and cytogenetic markers.
-9. Perform multivariable survival or progression analyses in independent cohorts.
-10. Functionally validate leading genes and pathway communities.
-
 ---
 
 ## Take-home message
@@ -439,8 +352,6 @@ Record and freeze the following before attempting to reproduce or extend the stu
 BDL-SP demonstrates how prior biological knowledge can be incorporated into deep learning without abandoning interpretability. Starting from WES data, the workflow integrates four variant callers, dNdScv gene selection, 28 genomic features, and a STRING-derived network to model 824 genes across MGUS and MM.
 
 The model achieved a reported balanced accuracy of 96.26% and an AUC of 0.99, while its strongest contribution was the post-hoc biological analysis: recovery of known MM-relevant genes, sample-level explanations, genomic-feature ranking, and classification of pathways according to how their significance changes across disease stages.
-
-The next step is not simply a larger model. It is stronger validation—harmonized external cohorts, longitudinal sampling, ancestry-aware analysis, functional experiments, and reproducible software. Within those boundaries, BDL-SP provides a useful framework for moving from mutation lists toward interpretable gene networks and altered signaling pathways.
 
 ---
 
@@ -457,5 +368,3 @@ Ruhela V, Jena L, Kaur G, Gupta R, Gupta A. BDL-SP: Bio-inspired deep-learning
 architecture for identifying altered signaling pathways in multiple myeloma.
 https://github.com/vivekruhela/BDL-SP-Bio-inspired-DL-architecture-for-Identification-of-altered-Signaling-Pathways-in-MM
 ```
-
-> **Medical disclaimer:** This article discusses a research study and research software. It does not provide medical advice, and BDL-SP should not be used for clinical decision-making without appropriate analytical, external, prospective, and regulatory validation.
