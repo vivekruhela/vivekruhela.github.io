@@ -242,9 +242,6 @@ The panel and BIO-DGI framework can support several **research** applications:
 4. **Pathway-focused studies**  
    Investigate whether groups of panel genes converge on recurrent myeloma mechanisms.
 
-5. **Population and ancestry analysis**  
-   Evaluate whether the same markers, effect directions, and network relationships generalize across populations.
-
 6. **Longitudinal clonal analysis**  
    Profile serial samples to study when candidate initiating and transformative events appear.
 
