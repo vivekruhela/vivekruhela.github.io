@@ -35,4 +35,23 @@ I welcome conversations about collaborative research, genomics, population genet
 
 [Get in touch](https://docs.google.com/forms/d/e/1FAIpQLScwxaomLlTxLzBnpKUPGWKJrlyBvPq_YLi-Ab2vxf5KOqp6IQ/viewform?usp=dialog)
 
+<div class="visitor-counter" style="margin-top: 2rem;">
+  👁️ <strong>Total website visits:</strong>
+  <span id="visitor-count" aria-live="polite">Loading…</span>
+</div>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  fetch("https://vivekruhela.goatcounter.com/counter/TOTAL.json")
+    .then(function (response) {
+      if (!response.ok) throw new Error("Counter unavailable");
+      return response.json();
+    })
+    .then(function (data) {
+      document.getElementById("visitor-count").textContent = data.count;
+    })
+    .catch(function () {
+      document.querySelector(".visitor-counter").style.display = "none";
+    });
+});
+</script>
