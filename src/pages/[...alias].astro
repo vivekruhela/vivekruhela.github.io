@@ -1,0 +1,17 @@
+---
+// Forwards old blog addresses (listed under `aliases:` in each post) to the post's new page.
+import { getPosts } from '../lib/content';
+export async function getStaticPaths() {
+  return (await getPosts()).flatMap((p) =>
+    p.data.aliases.map((a) => ({ params: { alias: a.replace(/^\/|\/$/g, '') }, props: { to: `/blog/${p.id}/` } })),
+  );
+}
+const { to } = Astro.props;
+---
+<!doctype html>
+<html lang="en"><head>
+  <meta charset="utf-8" />
+  <title>Redirecting…</title>
+  <meta http-equiv="refresh" content={`0; url=${to}`} />
+  <link rel="canonical" href={to} />
+</head><body><a href={to}>Continue</a></body></html>

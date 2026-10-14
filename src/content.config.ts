@@ -45,6 +45,7 @@ const blog = defineCollection({
     summary: z.string(),
     tags: z.array(z.string()).default([]),
     paper: z.string().optional(),   // file name (without .md) of a work entry this post explains
+    aliases: z.array(z.string()).default([]), // old URLs that should forward to this post
     draft: z.boolean().default(false),
   }),
 });

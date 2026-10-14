@@ -14,6 +14,7 @@ const paper = post.data.paper ? (await getWork()).find((w) => w.id === post.data
 const words = (post.body ?? '').split(/\s+/).length;
 ---
 <Base title={`${post.data.title} · ${site.name}`} description={post.data.summary}>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous" />
 <Nav />
 <main class="wrap">
   <article class="article">

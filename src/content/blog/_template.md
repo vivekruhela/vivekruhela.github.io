@@ -7,6 +7,7 @@ type: idea          # paper | method | idea | note
 summary: "One sentence shown on cards and in search."
 tags: ["Alzheimer's", "eQTL"]
 # paper: 2025-06-16-a-comprehensive-targeted-panel-of-295-genes-in-m   # optional: links a work entry
+# aliases: ["old/url/path"]   # optional: old addresses that should forward here
 draft: true         # set to false (or delete) to publish
 ---
 
