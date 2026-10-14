@@ -1,0 +1,13 @@
+// Cloudflare Workers deploy config: serves the built site from ./dist through worker/index.js,
+// which adds the private-beta password while the BETA_PASSWORD secret is set.
+{
+  "name": "academic-site",
+  "main": "worker/index.js",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": true,
+    "not_found_handling": "404-page"
+  }
+}

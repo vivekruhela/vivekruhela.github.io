@@ -1,0 +1,30 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import { getPosts, POST_TYPES, fmtDate, site as loadSite } from '../../lib/content';
+const site = loadSite();
+const posts = await getPosts();
+---
+<Base title={`Notebook · ${site.name}`} description="Papers explained, methods and new ideas in computational genomics.">
+<Nav />
+<main class="wrap">
+  <section class="hero" style="padding-bottom:40px">
+    <div class="eyebrow">Notebook</div>
+    <h1 style="margin-top:18px;font-size:clamp(42px,7vw,84px)">Papers explained, methods, and <span class="serif">new ideas</span>.</h1>
+    <p class="lede">Longer notes on my research, written for people outside my subfield.</p>
+  </section>
+  <section style="padding-top:40px">
+    <div class="feed">
+      {posts.map((p) => (
+        <a class="entry" href={`/blog/${p.id}/`}>
+          <span class="k">{POST_TYPES[p.data.type]}<br />{fmtDate(p.data.date)}</span>
+          <div><b>{p.data.title}</b><span>{p.data.summary}</span>
+            {p.data.tags.length > 0 && <div class="chips">{p.data.tags.map((t) => <span class="chip">{t}</span>)}</div>}
+          </div>
+        </a>
+      ))}
+      {posts.length === 0 && <p>No entries yet.</p>}
+    </div>
+  </section>
+</main>
+</Base>

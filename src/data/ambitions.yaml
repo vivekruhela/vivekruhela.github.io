@@ -1,0 +1,14 @@
+# Track 4: open hypotheses. status: Active | Next | Long term (any short word works).
+# DRAFT written from the CV. Rewrite in your own words.
+- status: Active
+  hypothesis: Ancestry-specific regulation explains part of Alzheimer's risk that European-only studies miss.
+  how: Testing with eQTL and GWAS colocalization in multiethnic brain banks.
+- status: Active
+  hypothesis: Inheritance patterns between mother and child carry disease signals that case-control designs overlook.
+  how: Haplotype transmission in ADSP dyads and gene × environment effects in birth cohorts.
+- status: Next
+  hypothesis: Biologically informed graph models can be interpretable enough to generate lab-testable hypotheses.
+  how: Extending the BIO-DGI approach from blood cancer to neurodegeneration.
+- status: Long term
+  hypothesis: An independent lab building open, ancestry-aware multi-omics resources.
+  how: Methods and tools that make discovery generalize across populations.

@@ -1,0 +1,64 @@
+# Builds the site and publishes it to GitHub Pages on every push to master.
+# Also rebuilds the previous Jekyll site from the academicpages-archive branch into /archive/.
+# Repo settings → Pages → Source must be "GitHub Actions".
+name: Deploy site
+
+on:
+  push:
+    branches: [master]
+  pull_request:          # build only, to catch errors before merging
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+
+      - name: Check out the previous site
+        uses: actions/checkout@v4
+        with:
+          ref: academicpages-archive
+          path: old-site
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+          working-directory: old-site
+      - name: Build the previous site into /archive
+        working-directory: old-site
+        run: bundle exec jekyll build --baseurl /archive -d ../dist/archive
+        env:
+          JEKYLL_ENV: production
+
+      - uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request'
+        with:
+          path: dist
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

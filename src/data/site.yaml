@@ -1,0 +1,36 @@
+# true while in private beta: hides the site from search engines and shows a "Private beta" pill.
+beta: false
+
+# Everything on the home page that isn't a journey chapter, a paper/talk or a tool.
+name: Vivek Ruhela
+eyebrow: Computational genomics · Columbia University
+# Wrap a word in *asterisks* to set it in the blue italic accent.
+headline: Reading genomes to *explain* disease, not just predict it.
+lede: >-
+  I build ancestry-aware statistical and interpretable AI methods that connect genetic
+  variation to genes, pathways and networks in Alzheimer's disease and other complex disorders.
+facts:
+  - { strong: Postdoc, text: "GiusTo Lab, CUIMC" }
+  - { strong: PhD, text: "IIIT-Delhi, 2024" }
+  - { strong: New York, text: "" }
+
+email: vr2592@cumc.columbia.edu
+links:
+  - { label: Google Scholar, url: "https://scholar.google.com/" }
+  - { label: ORCID, url: "https://orcid.org/0000-0003-4652-2376" }
+  - { label: GitHub, url: "https://github.com/vivekruhela" }
+  - { label: CV (PDF), url: "/files/Vivek_Ruhela_CV.pdf" }
+  - { label: Previous site (archive), url: "/archive/" }
+
+# Track 3: how you think. Colours: A (green), C (blue), G (amber), T (red), accent.
+pipeline:
+  - { step: Variant, color: A, question: "What changed?", detail: "Whole-genome and exome variation, runs of homozygosity, ancestry." }
+  - { step: Gene, color: C, question: "Which gene carries it?", detail: "Gene-level association, eQTL mapping, fine-mapping, colocalization." }
+  - { step: Pathway, color: G, question: "What process breaks?", detail: "Signalling pathways and biologically informed deep learning." }
+  - { step: Network, color: T, question: "Who else is affected?", detail: "Gene-gene interaction graphs and attention-based graph learning." }
+  - { step: Explanation, color: accent, question: "Can I test it?", detail: "A short list of genes and mechanisms someone can take to the bench." }
+
+principles:
+  - { quote: "Explain why, not just what.", text: "A model that predicts well but cannot say which genes matter has not finished the job." }
+  - { quote: "Ancestry is part of the answer.", text: "Signals found in one population often look different in another. Diverse cohorts are the point, not a robustness check." }
+  - { quote: "If others can't run it, it isn't done.", text: "miRPipe, miRSim, BRAINscape and SAGA exist so the next lab starts further ahead." }
