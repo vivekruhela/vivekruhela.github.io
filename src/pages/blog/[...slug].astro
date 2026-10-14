@@ -1,0 +1,36 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import { getPosts, getWork, POST_TYPES, KINDS, fmtDate, site as loadSite } from '../../lib/content';
+
+export async function getStaticPaths() {
+  return (await getPosts()).map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+const site = loadSite();
+const paper = post.data.paper ? (await getWork()).find((w) => w.id === post.data.paper) : undefined;
+const words = (post.body ?? '').split(/\s+/).length;
+---
+<Base title={`${post.data.title} · ${site.name}`} description={post.data.summary}>
+<Nav />
+<main class="wrap">
+  <article class="article">
+    <header>
+      <a class="back" href="/blog/">← Notebook</a>
+      <div class="eyebrow">{POST_TYPES[post.data.type]} · {fmtDate(post.data.date)} · {Math.max(1, Math.round(words / 220))} min read</div>
+      <h1>{post.data.title}</h1>
+      <p class="lede">{post.data.summary}</p>
+    </header>
+    {paper && (
+      <a class="paperref" href={paper.link ?? `/?w=${paper.id}#work`} target={paper.link ? '_blank' : undefined} rel="noopener" style={`--c:var(${KINDS[paper.kind].c})`}>
+        <span class="k">The paper · {paper.venue} · {paper.date.slice(0, 4)}{paper.impact_factor && ` · IF ${paper.ifs}`}</span>
+        <b>{paper.title}</b>
+      </a>
+    )}
+    <div class="prose"><Content /></div>
+    {post.data.tags.length > 0 && <div class="chips" style="margin-top:40px">{post.data.tags.map((t) => <span class="chip">{t}</span>)}</div>}
+  </article>
+</main>
+</Base>

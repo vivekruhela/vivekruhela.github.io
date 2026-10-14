@@ -1,0 +1,19 @@
+---
+// Old site's top-level pages now point at the matching section of the new one.
+export function getStaticPaths() {
+  const map: Record<string, string> = {
+    publications: '/#work', talks: '/#work', software: '/#tools', teaching: '/#journey',
+    cv: '/files/Vivek_Ruhela_CV.pdf', resume: '/files/Vivek_Ruhela_CV.pdf', about: '/', portfolio: '/#tools',
+    'year-archive': '/blog/', posts: '/blog/',
+  };
+  return Object.entries(map).map(([old, to]) => ({ params: { old }, props: { to } }));
+}
+const { to } = Astro.props;
+---
+<!doctype html>
+<html lang="en"><head>
+  <meta charset="utf-8" />
+  <title>Redirecting…</title>
+  <meta http-equiv="refresh" content={`0; url=${to}`} />
+  <link rel="canonical" href={to} />
+</head><body><a href={to}>Continue</a></body></html>

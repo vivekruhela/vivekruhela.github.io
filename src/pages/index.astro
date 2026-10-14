@@ -1,0 +1,203 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import { site as loadSite, ambitions as loadAmbitions, KINDS, POST_TYPES, getWork, getPosts, fmtDate } from '../lib/content';
+
+const site = loadSite();
+const ambitions = loadAmbitions();
+
+const NOW = new Date().getFullYear() + new Date().getMonth() / 12;
+const journey = (await getCollection('journey'))
+  .sort((a, b) => a.data.from - b.data.from)
+  .map((j) => ({
+    id: j.id,
+    ...j.data,
+    to: j.data.to ?? NOW,
+    coord: `chrV:${j.data.from}${j.data.to ? (j.data.to - j.data.from > 1 ? '–' + j.data.to : '') : '–now'}`,
+    text: j.body?.trim() ?? '',
+  }));
+
+const work = await getWork();
+const tools = (await getCollection('tools')).sort((a, b) => b.data.year - a.data.year);
+const posts = (await getPosts()).slice(0, 3);
+
+// Highlights strip: only shows numbers that exist
+const journals = work.filter((w) => w.kind === 'journal');
+const patents = work.filter((w) => w.kind === 'patent');
+const withIF = work.filter((w) => w.impact_factor).sort((a, b) => b.impact_factor! - a.impact_factor!);
+const stats = [
+  patents.length && { n: patents.length, l: patents.length > 1 ? 'Patents' : 'Patent', c: '--patent' },
+  { n: journals.length, l: 'Journal articles', c: '--nC' },
+  withIF.length && { n: withIF[0].ifs!, l: `Highest impact factor · ${withIF[0].venue}`, c: '--nC' },
+  withIF.length && { n: withIF.reduce((s, w) => s + w.impact_factor!, 0).toFixed(1), l: 'Cumulative impact factor', c: '--nC' },
+  { n: work.filter((w) => w.kind === 'talk').length, l: 'Oral talks', c: '--nT' },
+].filter(Boolean) as { n: number | string; l: string; c: string }[];
+const featured = work.filter((w) => w.featured).reverse();
+
+const NUC = { A: '--nA', C: '--nC', G: '--nG', T: '--nT', accent: '--accent' } as Record<string, string>;
+const statusColor = (s: string) => (/active/i.test(s) ? '--nA' : /next/i.test(s) ? '--nG' : '--accent');
+
+// *word* in the headline becomes the italic accent
+const headline = site.headline.replace(/\*(.+?)\*/g, '<span class="serif">$1</span>');
+const data = { journey, work, kinds: KINDS };
+---
+<Base title={`${site.name} · Computational genomics`} description={site.lede}>
+<Nav />
+
+<main class="wrap" id="top">
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="rv">
+        <div class="eyebrow">{site.eyebrow}</div>
+        <h1 style="margin-top:18px" set:html={headline} />
+        <p class="lede">{site.lede}</p>
+        <div class="meta">{site.facts.map((f: any) => <span><b>{f.strong}</b>{f.text && ` · ${f.text}`}</span>)}</div>
+      </div>
+      <div class="rv">
+        <canvas id="helix" aria-label="Animated DNA double helix" role="img"></canvas>
+        <div class="seq" id="seq" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="journey">
+    <div class="sec-head rv">
+      <div class="eyebrow">Track 1 · Journey</div>
+      <h2>My career, drawn as a <span class="serif">chromosome</span>.</h2>
+      <p>Each band is a chapter, positioned by year. Tap a band to read its locus: where it happened, what I built, and what it taught me.</p>
+    </div>
+    <div class="chrom-box rv">
+      <div class="chrom-scroll"><svg id="chrom" viewBox="0 0 1000 150" role="img" aria-label="Career timeline drawn as a chromosome ideogram"></svg></div>
+      <div class="locus" id="locus" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="sec-head rv">
+      <div class="eyebrow">Track 2 · Work</div>
+      <h2>A <span class="serif">Manhattan plot</span> of everything I've published and presented.</h2>
+      <p>Each point is a patent, paper, preprint, abstract, talk or tool, placed by date. Everything above the dashed line is peer-reviewed or granted, the way a GWAS peak clears genome-wide significance. Bigger journal points mean a higher impact factor.</p>
+    </div>
+    <div class="stats rv">
+      {stats.map((t) => <div class="stat" style={`--c:var(${t.c})`}><b>{t.n}</b><span>{t.l}</span></div>)}
+    </div>
+    {featured.length > 0 && (
+      <div class="spots rv">
+        {featured.map((w) => (
+          <article class="spot" style={`--c:var(${KINDS[w.kind].c})`}>
+            <div class="k">Spotlight · {KINDS[w.kind].n} · {w.date.slice(0, 4)}</div>
+            <h3>{w.title}</h3>
+            <p>{w.s}</p>
+            <div class="badges">
+              <span class="venue">{w.venue}</span>
+              {w.impact_factor && <span class="ifb">Impact factor <b>{w.ifs}</b></span>}
+              {w.kind === 'patent' && w.status && <span class="ifb">{w.status}{w.number && ` · ${w.number}`}</span>}
+              {w.link && <a href={w.link} target="_blank" rel="noopener">{w.kind === 'patent' ? 'View the patent' : 'Read the paper'} ↗</a>}
+            </div>
+          </article>
+        ))}
+      </div>
+    )}
+    <div class="man-box rv">
+      <div class="man-grid">
+        <div class="man-scroll">
+          <svg id="man" viewBox="0 0 720 360" role="img" aria-label="Publications and talks plotted by year"></svg>
+          <div class="legend" id="legend"></div>
+        </div>
+        <div class="detail" id="detail" aria-live="polite"></div>
+      </div>
+      <details class="all">
+        <summary>Show all {work.length} as a list</summary>
+        <ol>
+          {[...work].reverse().map((w) => (
+            <li>
+              <span class="yr">{w.date.slice(0, 4)}</span>
+              <div>
+                <div class="ti">{w.link ? <a href={w.link} target="_blank" rel="noopener">{w.title}</a> : w.title}</div>
+                <div class="ve"><span class="ki" style={`color:var(${KINDS[w.kind].c})`}>{KINDS[w.kind].n}</span>{w.venue}{w.impact_factor && <span class="ifb sm">IF {w.ifs}</span>}{w.kind === 'patent' && w.status && <span class="ifb sm">{w.status}</span>}</div>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </details>
+    </div>
+  </section>
+
+  <section id="thinking">
+    <div class="sec-head rv">
+      <div class="eyebrow">Track 3 · Thought process</div>
+      <h2>How I move from a <span class="serif">variant</span> to an explanation.</h2>
+      <p>Most of my projects follow the same path. The question at each step matters more than the method.</p>
+    </div>
+    <div class="pipe rv">
+      {site.pipeline.map((s: any) => (
+        <div class="step" style={`--c:var(${NUC[s.color] ?? '--accent'})`}><div class="k">{s.step}</div><h3>{s.question}</h3><p>{s.detail}</p></div>
+      ))}
+    </div>
+    <div class="principles rv">
+      {site.principles.map((p: any) => <div class="principle"><blockquote>{p.quote}</blockquote><p>{p.text}</p></div>)}
+    </div>
+  </section>
+
+  <section id="next">
+    <div class="sec-head rv">
+      <div class="eyebrow">Track 4 · Ambitions</div>
+      <h2>Open <span class="serif">hypotheses</span> I want to spend the next decade on.</h2>
+      <p>Written like a lab notebook so they can change as the evidence does.</p>
+    </div>
+    <div class="hyps rv">
+      {ambitions.map((h) => (
+        <article class="hyp" style={`--c:var(${statusColor(h.status)})`}><div class="st"><i></i>{h.status}</div><h3>{h.hypothesis}</h3><p>{h.how}</p></article>
+      ))}
+    </div>
+  </section>
+
+  <section id="notebook">
+    <div class="sec-head rv">
+      <div class="eyebrow">Track 5 · Notebook</div>
+      <h2>Papers explained, methods, and <span class="serif">new ideas</span>.</h2>
+      <p>Longer notes on the work above, written for people outside my subfield.</p>
+    </div>
+    <div class="posts rv">
+      {posts.map((p) => (
+        <a class="post" href={`/blog/${p.id}/`}>
+          <span class="k">{POST_TYPES[p.data.type]} · {fmtDate(p.data.date)}</span>
+          <b>{p.data.title}</b>
+          <span>{p.data.summary}</span>
+        </a>
+      ))}
+    </div>
+    <p style="margin-top:24px"><a href="/blog/">All notebook entries →</a></p>
+  </section>
+
+  <section id="tools">
+    <div class="sec-head rv">
+      <div class="eyebrow">Track 6 · Open tools</div>
+      <h2>Software other labs can <span class="serif">run</span>.</h2>
+    </div>
+    <div class="tools rv">
+      {tools.map((t) => (
+        <a class="tool" href={t.data.url} target="_blank" rel="noopener"><small>{t.data.year}</small><b>{t.data.name}</b><span>{t.body?.trim()}</span></a>
+      ))}
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <div>
+    <h3>Let's work together.</h3>
+    <p>I welcome conversations about genomics, population genetics, multi-omics, explainable AI and bioinformatics tools.</p>
+    <p><a class="copy" href={`mailto:${site.email}`}>{site.email}</a></p>
+    <p style="margin-top:18px">
+      {site.links.map((l: any, i: number) => <>{i > 0 && ' · '}<a href={l.url} target={l.url.startsWith('http') ? '_blank' : undefined} rel="noopener">{l.label}</a></>)}
+    </p>
+  </div>
+  <div>
+    <p>© {new Date().getFullYear()} {site.name}. Built with Astro.</p>
+  </div>
+</div></footer>
+
+<script type="application/json" id="site-data" set:html={JSON.stringify(data).replace(/</g, '\\u003c')} />
+<script src="../scripts/site.js"></script>
+</Base>

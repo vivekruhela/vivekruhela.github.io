@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+---
+<Base title="Not found" description="This page does not exist.">
+<Nav />
+<main class="wrap"><section class="hero">
+  <div class="eyebrow">404 · locus not found</div>
+  <h1 style="margin-top:18px;font-size:clamp(42px,7vw,84px)">This page isn't in the <span class="serif">assembly</span>.</h1>
+  <p class="lede"><a href="/">Back to the home page</a> or press ⌘K to search.</p>
+</section></main>
+<script>
+  // Links to the previous site (e.g. /publication/2022-07-22-mirpipe_rnaseq) still work:
+  // if the same path exists under /archive/, go there.
+  (async () => {
+    const p = location.pathname;
+    if (p.startsWith('/archive/')) return;
+    for (const c of [p, p.replace(/\/$/, '') + '.html', p.replace(/\/?$/, '/')]) {
+      try {
+        const r = await fetch('/archive' + c, { method: 'HEAD' });
+        if (r.ok) { location.replace('/archive' + c + location.hash); return; }
+      } catch {}
+    }
+  })();
+</script>
+</Base>
