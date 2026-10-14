@@ -16,6 +16,10 @@ const { title, description } = Astro.props;
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" />
+    <!-- GoatCounter: privacy-friendly visit counting, same account as the previous site -->
+    {!beta && (
+      <script is:inline data-goatcounter="https://vivekruhela.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+    )}
   </head>
   <body>
     <slot />

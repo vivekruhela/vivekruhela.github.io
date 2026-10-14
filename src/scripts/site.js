@@ -116,3 +116,9 @@ window.siteGo=(u)=>{
   const target=document.getElementById(u.hash.slice(1));if(target)target.scrollIntoView();
 };
 if(location.search)siteGo(new URL(location.href));
+
+/* ---------- visit counter (GoatCounter total, includes the previous site) ---------- */
+fetch('https://vivekruhela.goatcounter.com/counter/TOTAL.json')
+  .then(r=>{if(!r.ok)throw 0;return r.json()})
+  .then(d=>{$('#visitCount').textContent=d.count;$('#visits').hidden=false})
+  .catch(()=>{});

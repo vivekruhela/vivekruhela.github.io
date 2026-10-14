@@ -246,3 +246,5 @@ img{max-width:100%}
   .posts{grid-template-columns:1fr}
   .entry{grid-template-columns:1fr;gap:8px}
 }
+.visits{font:400 13px var(--mono);color:var(--muted)}
+.visits span{color:var(--fg);font-weight:500}
