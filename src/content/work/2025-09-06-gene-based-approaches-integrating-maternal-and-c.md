@@ -5,4 +5,4 @@ date: 2025-09-06
 venue: "UCLouvain · Brussels"
 ---
 
-Novel risk-modifying loci for fetal alcohol spectrum disorders.
+Analyzing mothers' and children's genomes together revealed new genes, including STX6, MED30, GLRX3 and WWOX, that shape how prenatal alcohol exposure affects a child's growth and memory.
