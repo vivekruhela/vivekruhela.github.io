@@ -6,14 +6,14 @@ import fs from 'node:fs';
 export const site = () => yaml.load(fs.readFileSync('src/data/site.yaml', 'utf8')) as any;
 export const ambitions = () => yaml.load(fs.readFileSync('src/data/ambitions.yaml', 'utf8')) as any[];
 
-// h = height on the Manhattan plot. Above 7.3 = above the "peer-reviewed" line.
+// h = row on the Manhattan plot's y-axis. Above 4.2 = above the "peer-reviewed or granted" line.
 export const KINDS = {
-  patent: { n: 'Patent', c: '--patent', h: 10.4 },
-  journal: { n: 'Journal article', c: '--nC', h: 8.8 },
-  preprint: { n: 'Preprint', c: '--nA', h: 6.4 },
-  abstract: { n: 'Conference abstract', c: '--nG', h: 5.6 },
-  talk: { n: 'Oral talk', c: '--nT', h: 4.6 },
-  tool: { n: 'Software', c: '--muted', h: 3.4 },
+  patent: { n: 'Patent', s: 'Patent',  c: '--patent', h: 6 },
+  journal: { n: 'Journal article', s: 'Journal',  c: '--nC', h: 5 },
+  preprint: { n: 'Preprint', s: 'Preprint',  c: '--nA', h: 3.4 },
+  abstract: { n: 'Conference abstract', s: 'Abstract',  c: '--nG', h: 2.5 },
+  talk: { n: 'Oral talk', s: 'Talk',  c: '--nT', h: 1.6 },
+  tool: { n: 'Software', s: 'Software',  c: '--muted', h: 0.7 },
 } as const;
 
 export const POST_TYPES: Record<string, string> = {

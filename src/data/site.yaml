@@ -10,7 +10,7 @@ lede: >-
   I build ancestry-aware statistical and interpretable AI methods that connect genetic
   variation to genes, pathways and networks in Alzheimer's disease and other complex disorders.
 facts:
-  - { strong: Postdoc, text: "GiusTo Lab, CUIMC" }
+  - { strong: Postdoc, text: "GiusTo Lab, CUIMC", url: "https://www.neurology.columbia.edu/research/research-labs/tosto-lab" }
   - { strong: PhD, text: "IIIT-Delhi, 2024" }
   - { strong: New York, text: "" }
 

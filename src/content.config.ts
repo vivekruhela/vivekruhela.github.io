@@ -10,6 +10,7 @@ const journey = defineCollection({
     from: z.number(),
     to: z.number().optional(),    // leave out for "now"
     where: z.string(),
+    url: z.string().optional(),   // optional link for the place
     tags: z.array(z.string()).default([]),
     pivot: z.boolean().default(false), // draw the centromere where this chapter starts
   }),

@@ -65,25 +65,25 @@ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
     function show(id){
     const j=JOURNEY.find(q=>q.id===id);
     svg.querySelectorAll('.band').forEach(b=>b.classList.toggle('on',b.dataset.id===id));
-    $('#locus').innerHTML=`<div class="coord">${esc(j.coord)}</div><div><h3>${esc(j.title)}</h3><p class="where">${esc(j.where)}</p><p>${esc(j.text)}</p><div class="chips">${j.tags.map(t=>`<span class="chip">${esc(t)}</span>`).join('')}</div></div>`;
+    $('#locus').innerHTML=`<div class="coord">${esc(j.coord)}</div><div><h3>${esc(j.title)}</h3><p class="where">${j.url?`<a href="${esc(j.url)}" target="_blank" rel="noopener">${esc(j.where)} ↗</a>`:esc(j.where)}</p><p>${esc(j.text)}</p><div class="chips">${j.tags.map(t=>`<span class="chip">${esc(t)}</span>`).join('')}</div></div>`;
   }
   window.showLocus=show; show(JOURNEY[JOURNEY.length-1].id);
 })();
 
 /* ---------- manhattan ---------- */
 (function(){
-  const svg=$('#man'),L=52,R=704,T=20,B=316,Y0=Math.floor(WORK[0].y)-.4,Y1=Math.floor(WORK[WORK.length-1].y)+.8;
-  const x=y=>L+(y-Y0)/(Y1-Y0)*(R-L), y=v=>B-(v/12.5)*(B-T);
+  const svg=$('#man'),L=84,R=704,T=20,B=316,Y0=Math.floor(WORK[0].y)-.4,Y1=Math.floor(WORK[WORK.length-1].y)+.8;
+  const x=y=>L+(y-Y0)/(Y1-Y0)*(R-L), y=v=>B-(v/6.6)*(B-T);
   for(let yr=Math.ceil(Y0);yr<=Math.floor(Y1);yr++){
     el('rect',{x:x(yr-.5),y:T,width:x(yr+.5)-x(yr-.5),height:B-T,fill:yr%2?'var(--bg)':'transparent'},svg);
     el('text',{x:x(yr),y:B+22,'text-anchor':'middle'},svg).textContent=yr;
   }
-  for(let v=0;v<=12;v+=2){el('line',{x1:L,x2:R,y1:y(v),y2:y(v),stroke:'var(--line)'},svg);el('text',{x:L-10,y:y(v)+4,'text-anchor':'end'},svg).textContent=v}
-  const t=el('text',{x:14,y:(T+B)/2,'text-anchor':'middle',transform:`rotate(-90 14 ${(T+B)/2})`},svg);t.textContent='−log₁₀(p), playfully';
-  el('line',{x1:L,x2:R,y1:y(7.3),y2:y(7.3),stroke:'var(--nT)','stroke-dasharray':'5 5'},svg);
-  el('text',{x:R,y:y(7.3)-8,'text-anchor':'end',fill:'var(--nT)'},svg).textContent='p = 5×10⁻⁸ · peer-reviewed';
+  // y-axis = type of output, ordered by weight of evidence (no numeric scale)
+  for(const k of Object.values(KINDS)){el('line',{x1:L,x2:R,y1:y(k.h),y2:y(k.h),stroke:'var(--line)'},svg);el('text',{x:L-10,y:y(k.h)+4,'text-anchor':'end'},svg).textContent=k.s}
+  el('line',{x1:L,x2:R,y1:y(4.2),y2:y(4.2),stroke:'var(--nT)','stroke-dasharray':'5 5'},svg);
+  el('text',{x:R,y:y(4.2)-8,'text-anchor':'end',fill:'var(--nT)'},svg).textContent='↑ peer-reviewed or granted';
   const pts=WORK.map((w,i)=>{
-    const jitter=((i*37)%10)/10*1.2-.4;
+    const jitter=((i*37)%10)/10*0.36-.18; // small offset so close points don't overlap
     const cx=x(w.y),cy=y(KINDS[w.kind].h+jitter);
     // journal points grow with impact factor; patents are diamonds
     const r=w.impact_factor?Math.min(17,6+2.4*Math.sqrt(w.impact_factor)):w.kind==='journal'?8:w.kind==='patent'?10:6;

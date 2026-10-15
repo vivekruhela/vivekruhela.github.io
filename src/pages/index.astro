@@ -52,7 +52,7 @@ const data = { journey, work, kinds: KINDS };
         <div class="eyebrow">{site.eyebrow}</div>
         <h1 style="margin-top:18px" set:html={headline} />
         <p class="lede">{site.lede}</p>
-        <div class="meta">{site.facts.map((f: any) => <span><b>{f.strong}</b>{f.text && ` · ${f.text}`}</span>)}</div>
+        <div class="meta">{site.facts.map((f: any) => <span><b>{f.strong}</b>{f.text && ' · '}{f.url ? <a href={f.url} target="_blank" rel="noopener">{f.text}</a> : f.text}</span>)}</div>
       </div>
       <div class="rv">
         <canvas id="helix" aria-label="Animated DNA double helix" role="img"></canvas>
@@ -77,7 +77,7 @@ const data = { journey, work, kinds: KINDS };
     <div class="sec-head rv">
       <div class="eyebrow">Track 2 · Work</div>
       <h2>A <span class="serif">Manhattan plot</span> of everything I've published and presented.</h2>
-      <p>Each point is a patent, paper, preprint, abstract, talk or tool, placed by date. Everything above the dashed line is peer-reviewed or granted, the way a GWAS peak clears genome-wide significance. Bigger journal points mean a higher impact factor.</p>
+      <p>Each point is a patent, paper, preprint, abstract, talk or tool. Left to right is the date; height is the type of output, from software at the bottom to patents at the top. Everything above the dashed line is peer-reviewed or granted, the way a GWAS peak clears genome-wide significance. Bigger journal points mean a higher impact factor.</p>
     </div>
     <div class="stats rv">
       {stats.map((t) => <div class="stat" style={`--c:var(${t.c})`}><b>{t.n}</b><span>{t.l}</span></div>)}
