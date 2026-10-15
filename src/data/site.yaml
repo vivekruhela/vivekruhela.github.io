@@ -16,7 +16,7 @@ facts:
 
 email: vr2592@cumc.columbia.edu
 links:
-  - { label: Google Scholar, url: "https://scholar.google.com/" }
+  - { label: Google Scholar, url: "https://scholar.google.com/citations?user=E5QtgqsAAAAJ&hl=en" }
   - { label: ORCID, url: "https://orcid.org/0000-0003-4652-2376" }
   - { label: GitHub, url: "https://github.com/vivekruhela" }
   - { label: CV (PDF), url: "/files/Vivek_Ruhela_CV.pdf" }
