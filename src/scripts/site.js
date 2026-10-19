@@ -72,11 +72,12 @@ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ---------- manhattan ---------- */
 (function(){
-  const svg=$('#man'),L=84,R=704,T=20,B=316,Y0=Math.floor(WORK[0].y)-.4,Y1=Math.floor(WORK[WORK.length-1].y)+.8;
-  const x=y=>L+(y-Y0)/(Y1-Y0)*(R-L), y=v=>B-(v/6.6)*(B-T);
-  for(let yr=Math.ceil(Y0);yr<=Math.floor(Y1);yr++){
-    el('rect',{x:x(yr-.5),y:T,width:x(yr+.5)-x(yr-.5),height:B-T,fill:yr%2?'var(--bg)':'transparent'},svg);
-    el('text',{x:x(yr),y:B+22,'text-anchor':'middle'},svg).textContent=yr;
+  const svg=$('#man'),L=84,R=704,T=20,B=316,Y0=Math.floor(WORK[0].y),Y1=Math.floor(WORK[WORK.length-1].y)+1;
+  const P=14, x=y=>L+P+(y-Y0)/(Y1-Y0)*(R-L-P), y=v=>B-(v/6.6)*(B-T); // P keeps January points clear of the axis labels
+  // each year's band runs from 1 Jan to 31 Dec, so a point sits inside the year it happened
+  for(let yr=Y0;yr<Y1;yr++){
+    el('rect',{x:x(yr),y:T,width:x(yr+1)-x(yr),height:B-T,fill:yr%2?'var(--bg)':'transparent'},svg);
+    el('text',{x:x(yr+.5),y:B+22,'text-anchor':'middle'},svg).textContent=yr;
   }
   // y-axis = type of output, ordered by weight of evidence (no numeric scale)
   for(const k of Object.values(KINDS)){el('line',{x1:L,x2:R,y1:y(k.h),y2:y(k.h),stroke:'var(--line)'},svg);el('text',{x:L-10,y:y(k.h)+4,'text-anchor':'end'},svg).textContent=k.s}

@@ -32,7 +32,7 @@ export async function getWork() {
         id: w.id,
         ...w.data,
         date: d.toISOString().slice(0, 10),
-        y: d.getUTCFullYear() + d.getUTCMonth() / 12 + d.getUTCDate() / 365,
+        y: d.getUTCFullYear() + (d.getUTCMonth() + (d.getUTCDate() - 1) / 31) / 12, // fraction of the year, always < next year
         s: w.body?.trim() ?? '',
         ifs: w.data.impact_factor?.toFixed(1), // display form, e.g. 7.0
       };
