@@ -1,7 +1,7 @@
 ---
 title: "GWAS integrating maternal and child genetics reveals novel risk-modifying loci for fetal alcohol spectrum disorders (FASD)"
 kind: preprint   # patent | journal | preprint | abstract | talk | tool
-date: 2025-09-10
+date: 2026-09-10
 venue: "Research Square"
 link: "https://doi.org/10.21203/rs.3.rs-9950101/v1"
 ---
