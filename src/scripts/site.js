@@ -123,3 +123,24 @@ fetch('https://vivekruhela.goatcounter.com/counter/TOTAL.json')
   .then(r=>{if(!r.ok)throw 0;return r.json()})
   .then(d=>{$('#visitCount').textContent=d.count;$('#visits').hidden=false})
   .catch(()=>{});
+
+/* ---------- reach-out form: posts to Google Forms, which emails both sides ---------- */
+(function(){
+  const f=$('#contactForm');if(!f)return;
+  f.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const st=$('#cStatus'),btn=$('#cSend');
+    const body=new FormData();
+    body.append(f.dataset.name,f.name.value.trim());
+    body.append(f.dataset.question,f.question.value.trim());
+    body.append('emailAddress',f.email.value.trim());
+    btn.disabled=true;st.textContent='Sending…';
+    try{
+      // Google Forms does not allow reading the response (no-cors), so a network error is the only failure we can see.
+      await fetch(f.dataset.action,{method:'POST',mode:'no-cors',body});
+      f.reset();st.textContent='Sent. A copy is on its way to your inbox.';
+    }catch{
+      st.textContent='Could not send. Check your connection and try again, or email '+document.querySelector('footer .copy').textContent+'.';
+    }finally{btn.disabled=false}
+  });
+})();

@@ -15,6 +15,15 @@ facts:
   - { strong: New York, text: "" }
 
 email: vr2592@cumc.columbia.edu
+
+# Reach-out form. Submissions go to a Google Form, which emails you and a copy to the sender.
+# Fill these three from the form's pre-filled link (see README → "Reach-out form").
+# While form_id is empty, the button opens the fallback form instead.
+contact:
+  form_id: ""
+  name_entry: ""
+  question_entry: ""
+  fallback: "https://docs.google.com/forms/d/e/1FAIpQLScwxaomLlTxLzBnpKUPGWKJrlyBvPq_YLi-Ab2vxf5KOqp6IQ/viewform"
 links:
   - { label: Google Scholar, url: "https://scholar.google.com/citations?user=E5QtgqsAAAAJ&hl=en" }
   - { label: ORCID, url: "https://orcid.org/0000-0003-4652-2376" }

@@ -5,6 +5,7 @@ import Nav from '../components/Nav.astro';
 import { site as loadSite, ambitions as loadAmbitions, KINDS, POST_TYPES, getWork, getPosts, fmtDate } from '../lib/content';
 
 const site = loadSite();
+const contact = site.contact ?? {};
 const ambitions = loadAmbitions();
 
 const NOW = new Date().getFullYear() + new Date().getMonth() / 12;
@@ -180,6 +181,29 @@ const data = { journey, work, kinds: KINDS };
       {tools.map((t) => (
         <a class="tool" href={t.data.url} target="_blank" rel="noopener"><small>{t.data.year}</small><b>{t.data.name}</b><span>{t.body?.trim()}</span></a>
       ))}
+    </div>
+  </section>
+  <section id="contact">
+    <div class="contact-grid">
+      <div class="sec-head rv" style="margin-bottom:0">
+        <div class="eyebrow">Reach out</div>
+        <h2>Have a question or an <span class="serif">idea</span>?</h2>
+        <p>Send it here. You'll get a copy by email, I'll get it too, and we can pick up the conversation from there.</p>
+      </div>
+      {contact.form_id ? (
+        <form class="contact rv" id="contactForm" data-action={`https://docs.google.com/forms/d/e/${contact.form_id}/formResponse`} data-name={contact.name_entry} data-question={contact.question_entry}>
+          <label for="cName">Name</label>
+          <input id="cName" name="name" type="text" autocomplete="name" required />
+          <label for="cEmail">Email</label>
+          <input id="cEmail" name="email" type="email" autocomplete="email" required />
+          <label for="cQuestion">Your question</label>
+          <textarea id="cQuestion" name="question" rows="5" required></textarea>
+          <button type="submit" id="cSend">Send</button>
+          <p class="cstatus" id="cStatus" aria-live="polite"></p>
+        </form>
+      ) : (
+        <div class="contact rv"><a class="cbtn" href={contact.fallback} target="_blank" rel="noopener">Open the reach-out form ↗</a></div>
+      )}
     </div>
   </section>
 </main>

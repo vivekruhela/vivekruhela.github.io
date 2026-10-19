@@ -88,6 +88,19 @@ What you built there and what it taught you.
 
 `pivot: true` on one chapter draws the chromosome's centromere at its start (currently the PhD).
 
+## Reach-out form
+
+The Contact section posts to a Google Form, so it's free and needs no server. Google emails the visitor a copy and notifies you.
+
+1. Create a Google Form with two required questions: **Name** (short answer) and **Question** (paragraph).
+2. Settings → Responses: *Collect email addresses* = **Responder input**, *Send responders a copy of their response* = **Always**.
+3. Responses tab → ⋮ → **Get email notifications for new responses**.
+4. ⋮ → **Get pre-filled link**, type sample answers, copy the link. It looks like
+   `https://docs.google.com/forms/d/e/FORM_ID/viewform?entry.111=Name&entry.222=Question`.
+5. In `src/data/site.yaml` set `contact.form_id: FORM_ID`, `name_entry: entry.111`, `question_entry: entry.222`.
+
+While `form_id` is empty the section shows a button that opens `contact.fallback` instead.
+
 ## Run locally (optional)
 
 ```bash

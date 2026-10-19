@@ -249,3 +249,17 @@ img{max-width:100%}
 .visits{font:400 13px var(--mono);color:var(--muted)}
 .visits span{color:var(--fg);font-weight:500}
 .prose img[src*="img.shields.io"]{border:0;border-radius:0;vertical-align:middle}
+
+/* reach-out form */
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:start}
+.contact{display:grid;gap:8px;padding:clamp(20px,3vw,32px);border-radius:22px;background:var(--surface);border:1px solid var(--line)}
+.contact label{font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+.contact input,.contact textarea{font:400 16px/1.5 var(--display);color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;width:100%}
+.contact input:focus,.contact textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
+.contact textarea{resize:vertical}
+.contact button,.cbtn{justify-self:start;margin-top:14px;font:500 15px var(--display);color:var(--bg);background:var(--fg);border:0;border-radius:999px;padding:12px 22px;cursor:pointer}
+.cbtn{display:inline-block;margin:0}
+.cbtn:hover{text-decoration:none;opacity:.9}
+.contact button:disabled{opacity:.5;cursor:default}
+.cstatus{margin:6px 0 0;font-size:14px;color:var(--muted);min-height:1.4em}
+@media (max-width:900px){.contact-grid{grid-template-columns:1fr}}
