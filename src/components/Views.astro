@@ -2,7 +2,7 @@
 // "N views" for one page, read from GoatCounter's public counter API.
 // GoatCounter already counts every visit (see Base.astro); this only displays the total.
 // Needs "Allow adding visitor counts on your website" ticked in GoatCounter → Settings.
-// Shows nothing while the count loads, if the page has no visits yet, or in private beta.
+// Shows nothing while the count loads, if the request fails, or in private beta.
 import { site as loadSite } from '../lib/content';
 interface Props { path: string; prefix?: string }
 const { path, prefix = '' } = Astro.props;
@@ -15,7 +15,9 @@ const { beta, goatcounter } = loadSite();
   for (const el of document.querySelectorAll<HTMLElement>('[data-views]')) {
     const url = `https://${el.dataset.gc}.goatcounter.com/counter/${encodeURIComponent(el.dataset.views!)}.json`;
     fetch(url)
-      .then((r) => (r.ok ? r.json() : null))
+      // 404 = GoatCounter has no visits for this page yet. The visit being made right now is
+      // being counted, so show 1 rather than hiding the counter.
+      .then((r) => (r.ok ? r.json() : r.status === 404 ? { count: '1' } : null))
       .then((d) => {
         const n = d && Number(String(d.count).replace(/\D/g, ''));
         if (!n) return;

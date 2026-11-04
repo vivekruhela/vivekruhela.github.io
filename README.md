@@ -111,7 +111,7 @@ One-time setup: sign in at https://vivekruhela.goatcounter.com → **Settings** 
 **Allow adding visitor counts on your website** → Save. Until that is ticked, the counters stay hidden.
 
 - GoatCounter caches these totals for up to 4 hours, so a new visit can take a while to show.
-- A post with no visits yet shows no counter instead of "0 views".
+- A post GoatCounter has no visits for yet shows "1 view" (the visit being made right now).
 - `goatcounter:` in `src/data/site.yaml` holds the site code. Empty it to turn off counting and the counters.
 
 ## Run locally (optional)
