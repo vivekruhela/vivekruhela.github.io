@@ -2,6 +2,7 @@
 import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Nav from '../../components/Nav.astro';
+import Views from '../../components/Views.astro';
 import { getPosts, getWork, POST_TYPES, KINDS, fmtDate, site as loadSite } from '../../lib/content';
 
 export async function getStaticPaths() {
@@ -20,7 +21,7 @@ const words = (post.body ?? '').split(/\s+/).length;
   <article class="article">
     <header>
       <a class="back" href="/blog/">← Notebook</a>
-      <div class="eyebrow">{POST_TYPES[post.data.type]} · {fmtDate(post.data.date)} · {Math.max(1, Math.round(words / 220))} min read</div>
+      <div class="eyebrow">{POST_TYPES[post.data.type]} · {fmtDate(post.data.date)} · {Math.max(1, Math.round(words / 220))} min read<Views path={`/blog/${post.id}/`} prefix=" · " /></div>
       <h1>{post.data.title}</h1>
       <p class="lede">{post.data.summary}</p>
     </header>

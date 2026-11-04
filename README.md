@@ -101,6 +101,19 @@ The Contact section posts to a Google Form, so it's free and needs no server. Go
 
 While `form_id` is empty the section shows a button that opens `contact.fallback` instead.
 
+## View counts
+
+Every notebook post shows how many times it has been opened ("· 1,234 views" next to the reading time,
+and under the date on `/blog/`). The numbers come from GoatCounter, which already counts visits to every
+page, so there is no server or database to run, and old visits count too.
+
+One-time setup: sign in at https://vivekruhela.goatcounter.com → **Settings** → tick
+**Allow adding visitor counts on your website** → Save. Until that is ticked, the counters stay hidden.
+
+- GoatCounter caches these totals for up to 4 hours, so a new visit can take a while to show.
+- A post with no visits yet shows no counter instead of "0 views".
+- `goatcounter:` in `src/data/site.yaml` holds the site code. Empty it to turn off counting and the counters.
+
 ## Run locally (optional)
 
 ```bash
