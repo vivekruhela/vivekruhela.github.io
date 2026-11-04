@@ -1,6 +1,10 @@
 # true while in private beta: hides the site from search engines and shows a "Private beta" pill.
 beta: false
 
+# GoatCounter site code (the part before .goatcounter.com). Counts visits on every page and shows
+# "N views" on each notebook post. Leave empty to turn both off. See README → "View counts".
+goatcounter: vivekruhela
+
 # Everything on the home page that isn't a journey chapter, a paper/talk or a tool.
 name: Vivek Ruhela
 eyebrow: Computational genomics · Columbia University
