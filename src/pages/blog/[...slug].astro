@@ -14,7 +14,10 @@ const site = loadSite();
 const paper = post.data.paper ? (await getWork()).find((w) => w.id === post.data.paper) : undefined;
 const words = (post.body ?? '').split(/\s+/).length;
 ---
-<Base title={`${post.data.title} · ${site.name}`} description={post.data.summary}>
+<Base title={`${post.data.title} · ${site.name}`} description={post.data.summary} type="article" jsonld={{
+  '@context': 'https://schema.org', '@type': 'BlogPosting', headline: post.data.title, description: post.data.summary,
+  datePublished: post.data.date.toISOString().slice(0, 10), author: { '@type': 'Person', name: site.name, url: 'https://vivekruhela.github.io/' },
+}}>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous" />
 <Nav />
 <main class="wrap">

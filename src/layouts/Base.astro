@@ -1,9 +1,12 @@
 ---
 import '../styles/site.css';
 import { site as loadSite } from '../lib/content';
-const { beta, goatcounter } = loadSite();
-interface Props { title: string; description: string }
-const { title, description } = Astro.props;
+const site = loadSite();
+const { beta, goatcounter } = site;
+interface Props { title: string; description: string; type?: 'website' | 'article'; jsonld?: object }
+const { title, description, type = 'website', jsonld } = Astro.props;
+// Absolute address of this page, so Google treats https://vivekruhela.github.io/ as the one true home page
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
 ---
 <!doctype html>
 <html lang="en">
@@ -13,6 +16,18 @@ const { title, description } = Astro.props;
     <title>{title}</title>
     <meta name="description" content={description} />
     {beta && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonical} />
+    <meta name="author" content={site.name} />
+    {site.google_site_verification && <meta name="google-site-verification" content={site.google_site_verification} />}
+    <!-- How the page looks when shared (LinkedIn, Slack, X) -->
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    {jsonld && <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" />
