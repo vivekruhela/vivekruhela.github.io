@@ -132,3 +132,14 @@ Live at **https://vivekruhela.github.io**, on GitHub Pages (free). Every push to
   here, and every PDF under `/files/` keeps its address.
 - **Private previews:** `worker/` and `wrangler.jsonc` let the same code run on Cloudflare Workers behind a
   password (`BETA_PASSWORD` secret), if you ever want a private preview again.
+
+## Google Search
+
+The site publishes `/sitemap.xml`, a `robots.txt` that points to it, a canonical address on every page and
+structured data (schema.org `Person` on the home page, `BlogPosting` on posts). The `/archive/` copy of the old
+site is marked `noindex` at build time so it does not compete with the new pages.
+
+To verify ownership in [Google Search Console](https://search.google.com/search-console), add a **URL prefix**
+property for `https://vivekruhela.github.io/`, choose **HTML tag**, and paste the `content="..."` value into
+`google_site_verification` in `src/data/site.yaml`. The text Google shows under your name comes from
+`seo_description` in the same file.

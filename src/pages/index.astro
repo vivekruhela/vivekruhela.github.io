@@ -42,8 +42,24 @@ const statusColor = (s: string) => (/active/i.test(s) ? '--nA' : /next/i.test(s)
 // *word* in the headline becomes the italic accent
 const headline = site.headline.replace(/\*(.+?)\*/g, '<span class="serif">$1</span>');
 const data = { journey, work, kinds: KINDS };
+
+// Search-result text: leads with the name so a search for "Vivek Ruhela" matches this page
+const description = site.seo_description ?? site.lede;
+// Structured data: tells Google this page is about a person and which profiles are theirs
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.name,
+  url: 'https://vivekruhela.github.io/',
+  jobTitle: 'Postdoctoral Research Scientist',
+  description: site.lede,
+  affiliation: { '@type': 'Organization', name: 'Columbia University Irving Medical Center' },
+  alumniOf: { '@type': 'CollegeOrUniversity', name: 'IIIT-Delhi' },
+  knowsAbout: ['Computational genomics', 'Statistical genetics', "Alzheimer's disease", 'Interpretable AI'],
+  sameAs: site.links.map((l: any) => l.url).filter((u: string) => u.startsWith('http')),
+};
 ---
-<Base title={`${site.name} · Computational genomics`} description={site.lede}>
+<Base title={`${site.name} · Computational genomics, Columbia University`} description={description} jsonld={person}>
 <Nav />
 
 <main class="wrap" id="top">

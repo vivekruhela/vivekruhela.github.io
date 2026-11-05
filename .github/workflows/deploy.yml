@@ -47,6 +47,13 @@ jobs:
         env:
           JEKYLL_ENV: production
 
+      # The archive repeats the old site's titles ("Vivek's academic portfolio"). Keep it reachable but
+      # out of Google, so search results point at the new home page instead of the old copy.
+      - name: Hide the archive from search engines
+        run: |
+          find dist/archive -name '*.html' -exec sed -i 's#<head>#<head><meta name="robots" content="noindex, follow">#I' {} +
+          rm -f dist/archive/sitemap.xml dist/archive/robots.txt
+
       - uses: actions/upload-pages-artifact@v3
         if: github.event_name != 'pull_request'
         with:

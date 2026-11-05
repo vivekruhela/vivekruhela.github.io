@@ -5,6 +5,14 @@ beta: false
 # "N views" on each notebook post. Leave empty to turn both off. See README → "View counts".
 goatcounter: vivekruhela
 
+# Google Search Console → Add property → URL prefix → "HTML tag" method. Paste only the content="..." value here.
+google_site_verification: ""
+
+# The two lines Google shows under your name in search results (about 155 characters fits).
+seo_description: >-
+  Vivek Ruhela, computational genomics postdoc at Columbia University. Ancestry-aware statistical
+  genetics and interpretable AI for Alzheimer's disease and complex disorders.
+
 # Everything on the home page that isn't a journey chapter, a paper/talk or a tool.
 name: Vivek Ruhela
 eyebrow: Computational genomics · Columbia University
