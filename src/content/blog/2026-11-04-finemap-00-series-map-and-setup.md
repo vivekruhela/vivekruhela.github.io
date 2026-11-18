@@ -191,7 +191,10 @@ bash simulate/run_all.sh data          # the real build, all chromosomes
 bash tests/run_tests.sh data           # checks the answer key, and that R and Python agree
 ```
 
-Each step skips work it has already done, so a failed run can simply be started again. The
+The real build and the checks are heavy, so on a shared cluster run them on a compute node, not
+the login node (which may stop them with a bare `Terminated`). With Slurm, one line does it:
+`sbatch simulate/run_all.sbatch data`. If a run stops part way, pick up at the step that failed,
+for example `FROM=05 bash simulate/run_all.sh data`; the steps before it are kept. The
 `data/truth/` folder is the answer key. Try not to peek until the posts ask you to.
 
 <details>
@@ -240,7 +243,7 @@ variant changes a CpG and the CpG lowers expression.
 all far from the loci. These are consequences of disease, not causes, which is the trap the
 differential expression post is about.
 
-**The GWAS cohorts.** Each new genome is a mosaic: for each 50 kb stretch, both haplotypes are
+**The GWAS cohorts.** Each new genome is a mosaic: for each 500 kb stretch (on average), both haplotypes are
 copied from randomly chosen panel people of the same ancestry who are not in the small cohort,
 with a small miscopy rate. LD inside a stretch is real LD. The full build has 10,000 European
 people (2,923 cases) and 4,000 African-ancestry people (1,340 cases).
