@@ -1,4 +1,5 @@
-# Builds the site and publishes it to GitHub Pages on every push to master.
+# Builds the site and publishes it to GitHub Pages on every push to master, and every 6 hours
+# (the rebuild refreshes the view counts that are written into the pages).
 # Also rebuilds the previous Jekyll site from the academicpages-archive branch into /archive/.
 # Repo settings → Pages → Source must be "GitHub Actions".
 name: Deploy site
@@ -8,6 +9,8 @@ on:
     branches: [master]
   pull_request:          # build only, to catch errors before merging
   workflow_dispatch:
+  schedule:              # rebuild every 6 hours so the view counts written into the pages stay fresh
+    - cron: '17 */6 * * *'
 
 permissions:
   contents: read
