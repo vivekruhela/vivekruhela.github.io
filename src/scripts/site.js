@@ -118,10 +118,12 @@ window.siteGo=(u)=>{
 };
 if(location.search)siteGo(new URL(location.href));
 
-/* ---------- visit counter (GoatCounter total, includes the previous site) ---------- */
+/* ---------- visit counter (GoatCounter total, includes the previous site) ----------
+   The build writes a total into the page (lib/views.ts), so visitors whose browser blocks
+   goatcounter.com still see it. This refreshes it live and never shows less than the built value. */
 fetch('https://vivekruhela.goatcounter.com/counter/TOTAL.json')
   .then(r=>{if(!r.ok)throw 0;return r.json()})
-  .then(d=>{$('#visitCount').textContent=d.count;$('#visits').hidden=false})
+  .then(d=>{const v=$('#visits'),n=Math.max(Number(v.dataset.built)||0,Number(String(d.count).replace(/\D/g,''))||0);if(!n)return;$('#visitCount').textContent=n.toLocaleString('en-US');v.hidden=false})
   .catch(()=>{});
 
 /* ---------- reach-out form: posts to Google Forms, which emails both sides ---------- */

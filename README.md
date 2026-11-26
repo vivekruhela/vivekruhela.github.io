@@ -111,6 +111,9 @@ One-time setup: sign in at https://vivekruhela.goatcounter.com → **Settings** 
 **Allow adding visitor counts on your website** → Save. Until that is ticked, the counters stay hidden.
 
 - GoatCounter caches these totals for up to 4 hours, so a new visit can take a while to show.
+- The counts are fetched when the site is built and written into the HTML, so visitors whose ad blocker or
+  browser blocks goatcounter.com still see them. The deploy workflow rebuilds every 6 hours to keep them fresh;
+  in browsers that allow it, the page also refreshes the number live.
 - A post GoatCounter has no visits for yet shows "1 view" (the visit being made right now).
 - `goatcounter:` in `src/data/site.yaml` holds the site code. Empty it to turn off counting and the counters.
 

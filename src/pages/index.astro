@@ -2,11 +2,14 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
+import { views } from '../lib/views';
 import { site as loadSite, ambitions as loadAmbitions, KINDS, POST_TYPES, getWork, getPosts, fmtDate } from '../lib/content';
 
 const site = loadSite();
 const contact = site.contact ?? {};
 const ambitions = loadAmbitions();
+// Total visits, written in at build time so visitors who block goatcounter.com still see it.
+const totalVisits = await views('TOTAL');
 
 const NOW = new Date().getFullYear() + new Date().getMonth() / 12;
 const journey = (await getCollection('journey'))
@@ -235,7 +238,7 @@ const person = {
   </div>
   <div>
     <p>© {new Date().getFullYear()} {site.name}. Built with Astro.</p>
-    <p class="visits" id="visits" hidden><span id="visitCount"></span> visits since the site began</p>
+    <p class="visits" id="visits" hidden={!totalVisits} data-built={totalVisits ?? ''}><span id="visitCount">{totalVisits?.toLocaleString('en-US')}</span> visits since the site began</p>
   </div>
 </div></footer>
 
